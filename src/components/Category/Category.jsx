@@ -16,7 +16,7 @@ export function Category() {
 
   return (
     <StyledCategory>
-      {categories?.map((category, index) => (
+      {categories.map((category, index) => (
           <Button key={index}
                   $btnType={indexCategory === index ? 'primary' : 'secondary'}
                   type={'button'}

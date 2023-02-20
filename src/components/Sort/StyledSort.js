@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
 
 export const StyledSort = styled.div`
   display: inline-flex;
@@ -39,6 +48,7 @@ export const StyledSort = styled.div`
 
     @media (any-hover: hover) {
       &:hover {
+        color: #222;
         border-bottom: 2px dashed #222;
       }
     }
@@ -54,7 +64,7 @@ export const StyledSort = styled.div`
     box-shadow: 0 5px 20px rgba(0, 0, 0, .14);
     border-radius: 10px;
     padding: 10px 0;
-    display: none;
+    animation: ${slideUp} .2s ease;
   }
   
   .sort-list-item {

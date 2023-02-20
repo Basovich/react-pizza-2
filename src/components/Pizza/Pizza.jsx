@@ -34,7 +34,7 @@ export function Pizza({imageUrl, name, about, types, sizes, prices}) {
       <div className="pizza-selector">
         <div className="pizza-selector-row">
           {
-            types?.map((type, index) => (
+            types.map((type, index) => (
               <button key={index}
                       className={type === typePizza ? 'pizza-selector-button active' : 'pizza-selector-button'}
                       type="button"
@@ -47,7 +47,7 @@ export function Pizza({imageUrl, name, about, types, sizes, prices}) {
         </div>
         <div className="pizza-selector-row">
           {
-            sizes?.map((size, index) => (
+            sizes.map((size, index) => (
               <button key={index}
                       className={index === sizePizza ? 'pizza-selector-button active' : 'pizza-selector-button'}
                       type="button"
