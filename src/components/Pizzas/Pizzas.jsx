@@ -1,9 +1,11 @@
 import {useEffect, useState} from "react";
 import { StyledPizzas } from "./StyledPizzas";
-import { Pizza } from "../Pizza/Pizza";
+import { Pizza } from "../Pizza";
+import { SkeletonPizza } from "../Pizza/SkeletonPizza";
 
 export function Pizzas() {
   const [pizzas, setPizzas] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     fetch('https://63f2bca7aab7d091250c8a50.mockapi.io/pizzas/')
@@ -12,15 +14,18 @@ export function Pizzas() {
       })
       .then((arr) => {
         setPizzas(arr);
+        setIsLoaded(true);
       })
-  }, [setPizzas])
+  }, [])
 
 
   return (
     <StyledPizzas>
-      {pizzas.map((pizza) => (
-        <Pizza key={pizza.id} {...pizza} />
-      ))}
+      {
+        isLoaded
+        ? pizzas.map((pizza) => <Pizza key={pizza.id} {...pizza} />)
+        : [...new Array(8)].map((_, index) => <SkeletonPizza key={index} />)
+      }
     </StyledPizzas>
   )
 }

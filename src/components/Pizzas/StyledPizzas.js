@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {StyledPizza} from "../Pizza/StyledPizza";
+import {StyledSkeletonPizza} from "../Pizza/StyledSkeletonPizza";
 
 export const StyledPizzas = styled.div`
   display: grid;
@@ -13,7 +14,9 @@ export const StyledPizzas = styled.div`
     row-gap: 40px;
   }
   
+  ${StyledSkeletonPizza},
   ${StyledPizza} {
+    max-width: 275px;
     justify-self: center;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
