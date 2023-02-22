@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
-export const StyledCartButton = styled.button`
+export const StyledCartButton = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,6 +10,7 @@ export const StyledCartButton = styled.button`
   border-radius: 30px;
   padding: 12px 24px;
   color: #fff;
+  text-decoration: none;
   transition: background-color .15s, transform .15s;
 
   &:active {

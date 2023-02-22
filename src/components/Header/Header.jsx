@@ -2,11 +2,13 @@ import {StyledHeader} from "./StyledHeader";
 import {Logo} from "../Logo/Logo";
 import {CartButton} from "../CartButton/CartButton";
 
-export function Header() {
+export function Header({isNeedCartButton}) {
   return (
     <StyledHeader>
       <Logo />
-      <CartButton />
+      {
+        isNeedCartButton && <CartButton />
+      }
     </StyledHeader>
   );
 }

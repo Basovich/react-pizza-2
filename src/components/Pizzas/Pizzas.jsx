@@ -16,6 +16,8 @@ export function Pizzas() {
         setPizzas(arr);
         setIsLoaded(true);
       })
+
+    window.scrollTo(0, 0);
   }, [])
 
 

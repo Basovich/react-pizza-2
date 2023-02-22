@@ -1,14 +1,29 @@
 import Logotype from '../../assets/images/logotype.svg';
-import {StyledLogo} from "./StyledLogo";
+import {StyledLogoLink, StyledLogoDiv} from "./StyledLogo";
+import {useLocation} from "react-router";
 
 export function Logo() {
-  return (
-    <StyledLogo>
-      <img width="38" src={Logotype} alt="Pizza logo"/>
-      <div className="text">
-        <h1>React Pizza</h1>
-        <p>the most delicious pizza in the universe</p>
-      </div>
-    </StyledLogo>
-  )
+  const location = useLocation();
+
+  if (location.pathname === '/' ) {
+    return (
+      <StyledLogoDiv>
+        <img width="38" src={Logotype} alt="Index logo"/>
+        <div className="text">
+          <h1>React Pizzas</h1>
+          <p>the most delicious pizza in the universe</p>
+        </div>
+      </StyledLogoDiv>
+    )
+  } else {
+    return (
+      <StyledLogoLink to="/">
+        <img width="38" src={Logotype} alt="Index logo"/>
+        <div className="text">
+          <h1>React Pizzas</h1>
+          <p>the most delicious pizza in the universe</p>
+        </div>
+      </StyledLogoLink>
+    )
+  }
 }
