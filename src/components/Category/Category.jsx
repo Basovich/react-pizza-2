@@ -1,26 +1,15 @@
-import {useState} from "react";
 import {StyledCategory} from "./StyledCategory";
 import {Button} from "../Button/Button";
+import {categories} from "../../pages/Home";
 
-const categories = [
-  'All',
-  'Meat',
-  'Vegetarian',
-  'Grill',
-  'Spicy',
-  'Closed',
-]
-
-export function Category() {
-  const [indexCategory, setIndexCategory] = useState(0);
-
+export function Category({id, onChange}) {
   return (
     <StyledCategory>
       {categories.map((category, index) => (
           <Button key={index}
-                  $btnType={indexCategory === index ? 'primary' : 'secondary'}
+                  $btnType={id === index ? 'primary' : 'secondary'}
                   type={'button'}
-                  onClick={() => setIndexCategory(index)}
+                  onClick={() => onChange(index)}
           >
             {category}
           </Button>

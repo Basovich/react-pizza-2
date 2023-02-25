@@ -3,9 +3,12 @@ import { StyledPizzas } from "./StyledPizzas";
 import { Pizza } from "../Pizza";
 import { SkeletonPizza } from "../Pizza/SkeletonPizza";
 
-export function Pizzas() {
+export function Pizzas({sortType, categoryId}) {
   const [pizzas, setPizzas] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  console.log(sortType)
+  console.log(categoryId)
 
   useEffect(() => {
     fetch('https://63f2bca7aab7d091250c8a50.mockapi.io/pizzas/')

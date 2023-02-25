@@ -2,16 +2,34 @@ import {Filters} from "../components/Filters/Filters";
 import {Title} from "../components/Title/Title";
 import {Pizzas} from "../components/Pizzas/Pizzas";
 import {Header} from "../components/Header/Header";
+import {useState} from "react";
+
+export const sortTypes = ['popular', 'alphabet'];
+export const categories = [
+  'All',
+  'Meat',
+  'Vegetarian',
+  'Grill',
+  'Spicy',
+  'Closed',
+]
 
 export function Home() {
+  const [sortType, setSortType] = useState(sortTypes[0]);
+  const [categoryId, setCategoryId] = useState(0);
+
   return (
     <>
       <Header isNeedCartButton={true} />
-      <Filters />
+      <Filters sortType={sortType}
+               onChangeSortType={setSortType}
+               categoryId={categoryId}
+               onChangeCategoryId={setCategoryId}
+      />
       <Title>
         All pizzas
       </Title>
-      <Pizzas />
+      <Pizzas sortType={sortType} categoryId={categoryId} />
     </>
   )
 }
