@@ -1,8 +1,19 @@
-import {RouterProvider} from "react-router-dom";
-import {router} from "./pages/router";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+import {Home} from "./pages/Home";
+import {Cart} from "./pages/Cart";
+import {Thanks} from "./pages/Thanks";
+import {Error} from "./pages/Error";
 
 export function App() {
   return (
-    <RouterProvider router={router} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="cart" element={<Cart />} />
+      <Route path="thanks" element={<Thanks />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
   )
 }

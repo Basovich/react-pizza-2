@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter} from "react-router-dom";
 import { GlobalStyle } from "./globalStyle/globalStyle";
 import {Container, Wrapper} from "./globalStyle/layout";
 import {App} from "./App";
@@ -10,7 +11,9 @@ root.render(
   <Wrapper>
     <GlobalStyle />
     <Container>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Container>
   </Wrapper>
 );

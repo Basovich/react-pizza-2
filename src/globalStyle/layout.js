@@ -17,6 +17,8 @@ export const Wrapper = styled.main`
 `;
 
 export const Container = styled.section`
+  display: flex;
+  flex-direction: column;
   flex: 1 1;
   background-color: #fff;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
