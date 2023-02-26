@@ -7,6 +7,7 @@ import {NotFoundPizzas} from "./NotFoundPizzas";
 export function Pizzas({sortType, categoryId, search}) {
   const [pizzas, setPizzas] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index} />));
 
   useEffect(() => {
     setIsLoaded(false);
@@ -40,7 +41,7 @@ export function Pizzas({sortType, categoryId, search}) {
         ? pizzas.length
           ? pizzas.map((pizza) => <Pizza key={pizza.id} {...pizza} />)
           : <NotFoundPizzas />
-        : [...new Array(4)].map((_, index) => <SkeletonPizza key={index} />)
+        : skeletons
       }
     </StyledPizzas>
   )
