@@ -4,7 +4,7 @@ import {Pizzas} from "../components/Pizzas/Pizzas";
 import {Header} from "../components/Header/Header";
 import {useState} from "react";
 
-export const sortTypes = ['popular', 'alphabet'];
+export const sortTypes = ['popular', 'price'];
 export const categories = [
   'All',
   'Meat',

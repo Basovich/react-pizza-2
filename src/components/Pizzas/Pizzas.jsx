@@ -7,11 +7,15 @@ export function Pizzas({sortType, categoryId}) {
   const [pizzas, setPizzas] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(sortType)
-  console.log(categoryId)
-
   useEffect(() => {
-    fetch('https://63f2bca7aab7d091250c8a50.mockapi.io/pizzas/')
+    setIsLoaded(false);
+    let url = `https://63f2bca7aab7d091250c8a50.mockapi.io/pizzas/?sortBy=${sortType}`;
+
+    if (categoryId !== 0) {
+      url = `${url}&category=${categoryId}`;
+    }
+
+    fetch(url)
       .then((respond) => {
         return respond.json();
       })
@@ -21,7 +25,7 @@ export function Pizzas({sortType, categoryId}) {
       })
 
     window.scrollTo(0, 0);
-  }, [])
+  }, [sortType, categoryId, setIsLoaded])
 
 
   return (
@@ -29,7 +33,7 @@ export function Pizzas({sortType, categoryId}) {
       {
         isLoaded
         ? pizzas.map((pizza) => <Pizza key={pizza.id} {...pizza} />)
-        : [...new Array(8)].map((_, index) => <SkeletonPizza key={index} />)
+        : [...new Array(4)].map((_, index) => <SkeletonPizza key={index} />)
       }
     </StyledPizzas>
   )
