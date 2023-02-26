@@ -4,7 +4,7 @@ import {ErrorContent} from "../components/ErrorContent/ErrorContent";
 export function Error() {
   return (
     <>
-      <Header isNeedCartButton={true} />
+      <Header />
       <ErrorContent />
     </>
   )

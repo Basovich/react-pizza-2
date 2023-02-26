@@ -17,10 +17,15 @@ export const categories = [
 export function Home() {
   const [sortType, setSortType] = useState(sortTypes[0]);
   const [categoryId, setCategoryId] = useState(0);
+  const [searchValue, setSearchValue] = useState('');
 
   return (
     <>
-      <Header isNeedCartButton={true} />
+      <Header isNeedCartButton={true}
+              isNeedSearch={true}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+      />
       <Filters sortType={sortType}
                onChangeSortType={setSortType}
                categoryId={categoryId}
@@ -29,7 +34,7 @@ export function Home() {
       <Title>
         All pizzas
       </Title>
-      <Pizzas sortType={sortType} categoryId={categoryId} />
+      <Pizzas sortType={sortType} categoryId={categoryId} search={searchValue} />
     </>
   )
 }

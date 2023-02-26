@@ -33,4 +33,9 @@ export const StyledPizzas = styled.div`
       border-bottom: 0;
     }
   }
+  
+  .not-found {
+    width: 100%;
+    font-size: 30px;
+  }
 `;
