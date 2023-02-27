@@ -16,7 +16,6 @@ export const StyledSearch = styled.div`
     font-size: 14px;
     line-height: 120%;
     color: #181818;
-    appearance: none;
     
     &:focus-visible {
       outline: 0;

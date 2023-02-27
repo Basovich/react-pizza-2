@@ -4,7 +4,7 @@ import { Pizza } from "../Pizza";
 import { SkeletonPizza } from "../Pizza/SkeletonPizza";
 import {NotFoundPizzas} from "./NotFoundPizzas";
 
-export function Pizzas({sortType, categoryId, search}) {
+export function Pizzas({sortType, categoryId, search, currentPage}) {
   const [pizzas, setPizzas] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index} />));
@@ -13,7 +13,9 @@ export function Pizzas({sortType, categoryId, search}) {
     setIsLoaded(false);
     let url = `https://63f2bca7aab7d091250c8a50.mockapi.io/pizzas/?sortBy=${sortType}`;
 
-    if (categoryId !== 0) {
+    if (categoryId === 0) {
+      url =`${url}&page=${currentPage}&limit=4`;
+    } else {
       url = `${url}&category=${categoryId}`;
     }
 
@@ -31,7 +33,7 @@ export function Pizzas({sortType, categoryId, search}) {
       })
 
     window.scrollTo(0, 0);
-  }, [sortType, categoryId, search, setIsLoaded])
+  }, [sortType, categoryId, search, setIsLoaded, currentPage])
 
 
   return (
