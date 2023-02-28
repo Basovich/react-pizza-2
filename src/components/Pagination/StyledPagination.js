@@ -50,6 +50,8 @@ export const StyledPagination = styled(ReactPaginate)`
     &.active {
       background-color: #fe5f1e;
       color: #fff;
+      cursor: default;
+      pointer-events: none;
     }
     
     .icon {

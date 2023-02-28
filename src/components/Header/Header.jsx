@@ -6,16 +6,14 @@ import {Search} from "../Search/Search";
 export function Header(
   {
     isNeedCartButton = true,
-    isNeedSearch = false,
-    searchValue,
-    setSearchValue
+    isNeedSearch = false
   }
 ) {
   return (
     <StyledHeader>
       <Logo />
       {
-        isNeedSearch && <Search value={searchValue} onChange={setSearchValue} />
+        isNeedSearch && <Search />
       }
       {
         isNeedCartButton && <CartButton />

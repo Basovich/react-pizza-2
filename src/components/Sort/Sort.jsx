@@ -1,9 +1,10 @@
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import {StyledSort} from "./StyledSort";
-import {sortTypes} from "../../pages/Home";
+import {SearchContext, sortTypes} from "../../pages/Home";
 
-export function Sort({type, onChange}) {
+export function Sort() {
   const [isOpen, setIsOpen] = useState(false);
+  const {sortType, setSortType} = useContext(SearchContext);
   const refSort= useRef();
 
   const handlerOutsideClick = useCallback( event => {
@@ -32,7 +33,7 @@ export function Sort({type, onChange}) {
   }, [handlerOutsideClick]);
 
   const handleOnClickSort = (name) => {
-    onChange(name);
+    setSortType(name);
     setIsOpen(false);
   }
 
@@ -47,7 +48,7 @@ export function Sort({type, onChange}) {
       <button onClick={() => setIsOpen(!isOpen)}
               className="sort-button" type={'button'}
       >
-        {type}
+        {sortType}
       </button>
       {
         isOpen && (
@@ -55,7 +56,7 @@ export function Sort({type, onChange}) {
             {
               sortTypes.map((name, index) => (
                 <button onClick={() => handleOnClickSort(name)}
-                        className={type === name ? "sort-list-item active" : "sort-list-item"}
+                        className={sortType === name ? "sort-list-item active" : "sort-list-item"}
                         type={'button'}
                         key={index}
                 >
