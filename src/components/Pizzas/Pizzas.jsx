@@ -3,11 +3,11 @@ import { StyledPizzas } from "./StyledPizzas";
 import { Pizza } from "../Pizza";
 import { SkeletonPizza } from "../Pizza/SkeletonPizza";
 import {NotFoundPizzas} from "./NotFoundPizzas";
-import {SearchContext} from "../../pages/Home";
+import {PizzasContext} from "../../pages/Home";
 import {Pagination} from "../Pagination/Pagination";
 
 export function Pizzas() {
-  const {searchValue, sortType, categoryId, countPage, currentPage, setCountPage} = useContext(SearchContext);
+  const {searchValue, sortType, categoryId, countPage, currentPage, setCountPage} = useContext(PizzasContext);
   const [pizzas, setPizzas] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index} />));

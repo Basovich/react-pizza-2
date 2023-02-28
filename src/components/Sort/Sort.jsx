@@ -1,10 +1,10 @@
 import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import {StyledSort} from "./StyledSort";
-import {SearchContext, sortTypes} from "../../pages/Home";
+import {PizzasContext, sortTypes} from "../../pages/Home";
 
 export function Sort() {
   const [isOpen, setIsOpen] = useState(false);
-  const {sortType, setSortType} = useContext(SearchContext);
+  const {sortType, setSortType} = useContext(PizzasContext);
   const refSort= useRef();
 
   const handlerOutsideClick = useCallback( event => {

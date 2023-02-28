@@ -1,10 +1,10 @@
 import {useContext} from "react";
 import {StyledCategory} from "./StyledCategory";
 import {Button} from "../Button/Button";
-import {categories, SearchContext} from "../../pages/Home";
+import {categories, PizzasContext} from "../../pages/Home";
 
 export function Category() {
-  const {categoryId, setCategoryId, setCurrentPage} = useContext(SearchContext);
+  const {categoryId, setCategoryId, setCurrentPage} = useContext(PizzasContext);
 
   function handleOnChangeCategory(index) {
     setCategoryId(index);

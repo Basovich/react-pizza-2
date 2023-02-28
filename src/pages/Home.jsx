@@ -14,17 +14,17 @@ export const categories = [
   'Closed',
 ]
 
-export const SearchContext = createContext();
+export const PizzasContext = createContext(null);
 
 export function Home() {
+  const [searchValue, setSearchValue] = useState('');
   const [sortType, setSortType] = useState(sortTypes[0]);
   const [categoryId, setCategoryId] = useState(0);
-  const [searchValue, setSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [countPage, setCountPage] = useState(1);
 
   return (
-    <SearchContext.Provider value={
+    <PizzasContext.Provider value={
       {
         searchValue,
         setSearchValue,
@@ -42,6 +42,6 @@ export function Home() {
       <Filters />
       <Title>All pizzas</Title>
       <Pizzas />
-    </SearchContext.Provider>
+    </PizzasContext.Provider>
   )
 }

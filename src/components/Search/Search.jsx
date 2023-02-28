@@ -1,9 +1,9 @@
 import {StyledSearch} from "./StyledSearch";
 import {useContext} from "react";
-import {SearchContext} from "../../pages/Home";
+import {PizzasContext} from "../../pages/Home";
 
 export function Search() {
-  const {searchValue, setSearchValue} = useContext(SearchContext);
+  const {searchValue, setSearchValue} = useContext(PizzasContext);
 
   return (
     <StyledSearch>

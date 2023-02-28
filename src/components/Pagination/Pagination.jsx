@@ -1,9 +1,9 @@
 import {useContext} from "react";
 import {StyledPagination} from "./StyledPagination";
-import {SearchContext} from "../../pages/Home";
+import {PizzasContext} from "../../pages/Home";
 
 export function Pagination() {
-  const {setCurrentPage, countPage} = useContext(SearchContext);
+  const {setCurrentPage, countPage} = useContext(PizzasContext);
 
   return (
     <nav aria-label="Page navigation comments">
