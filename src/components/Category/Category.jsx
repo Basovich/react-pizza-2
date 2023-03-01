@@ -1,14 +1,12 @@
-import {useContext} from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import {StyledCategory} from "./StyledCategory";
 import {Button} from "../Button/Button";
-import {categories, PizzasContext} from "../../pages/Home";
+import {categories} from "../../config";
+import {changeCategoryId} from "../../redux/slices/filterSlice";
 
 export function Category() {
-  const {categoryId, setCategoryId} = useContext(PizzasContext);
-
-  function handleOnChangeCategory(index) {
-    setCategoryId(index);
-  }
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const dispatch = useDispatch();
 
   return (
     <StyledCategory>
@@ -16,7 +14,7 @@ export function Category() {
           <Button key={index}
                   $btnType={categoryId === index ? 'primary' : 'secondary'}
                   type={'button'}
-                  onClick={() => handleOnChangeCategory(index)}
+                  onClick={() => dispatch(changeCategoryId(index))}
           >
             {category}
           </Button>

@@ -1,11 +1,14 @@
-import {useCallback, useContext, useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import {StyledSort} from "./StyledSort";
-import {PizzasContext, sortTypes} from "../../pages/Home";
+import {sorts} from "../../config";
+import {changeSort} from "../../redux/slices/filterSlice";
 
 export function Sort() {
-  const [isOpen, setIsOpen] = useState(false);
-  const {sortType, setSortType} = useContext(PizzasContext);
   const refSort= useRef();
+  const [isOpen, setIsOpen] = useState(false);
+  const sortType = useSelector((state) => state.filter.sort);
+  const dispatch = useDispatch();
 
   const handlerOutsideClick = useCallback( event => {
     // e.path none in Safari
@@ -33,7 +36,7 @@ export function Sort() {
   }, [handlerOutsideClick]);
 
   const handleOnClickSort = (name) => {
-    setSortType(name);
+    dispatch(changeSort(name));
     setIsOpen(false);
   }
 
@@ -54,7 +57,7 @@ export function Sort() {
         isOpen && (
           <div className="sort-list">
             {
-              sortTypes.map((name, index) => (
+              sorts.map((name, index) => (
                 <button onClick={() => handleOnClickSort(name)}
                         className={sortType === name ? "sort-list-item active" : "sort-list-item"}
                         type={'button'}
