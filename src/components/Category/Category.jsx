@@ -4,11 +4,10 @@ import {Button} from "../Button/Button";
 import {categories, PizzasContext} from "../../pages/Home";
 
 export function Category() {
-  const {categoryId, setCategoryId, setCurrentPage} = useContext(PizzasContext);
+  const {categoryId, setCategoryId} = useContext(PizzasContext);
 
   function handleOnChangeCategory(index) {
     setCategoryId(index);
-    setCurrentPage(1);
   }
 
   return (
