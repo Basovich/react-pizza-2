@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 import {sorts} from "../../config";
 
 const initialState = {
   search: '',
-  sort: sorts[0],
+  sortType: sorts[0],
   categoryId: 0
-}
+};
 
 export const filterSlice = createSlice({
   name: 'filter',
@@ -15,14 +15,14 @@ export const filterSlice = createSlice({
       state.search = action.payload
     },
     changeSort: (state, action) => {
-      state.sort = action.payload
+      state.sortType = action.payload
     },
     changeCategoryId: (state, action) => {
       state.categoryId = action.payload
     },
   },
-})
+});
 
-export const { changeSearch, changeSort, changeCategoryId } = filterSlice.actions
+export const { changeSearch, changeSort, changeCategoryId } = filterSlice.actions;
 
-export default filterSlice.reducer
+export default filterSlice.reducer;
