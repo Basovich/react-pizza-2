@@ -14,15 +14,10 @@ export function Pizzas() {
 
   useEffect(() => {
     setIsLoaded(false);
-    let url = `${baseUrl}sortBy=${sortType}`;
-
-    if (categoryId !== 0) {
-      url = `${url}&category=${categoryId}`;
-    }
-
-    if (searchValue) {
-      url = `${url}&search=${searchValue}`;
-    }
+    const category = categoryId === 0 ? '' : `&category=${categoryId}`;
+    const search = searchValue ? `&search=${searchValue}` : '';
+    const sort = `&sortBy=${sortType}`;
+    const url = `${baseUrl}${category}${search}${sort}`;
 
     fetch(url)
       .then((respond) => {
