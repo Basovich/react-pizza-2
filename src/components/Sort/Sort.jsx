@@ -5,7 +5,7 @@ import {sorts} from "../../config";
 import {changeSort} from "../../redux/slices/filterSlice";
 
 export function Sort() {
-  const refSort= useRef();
+  const refSort = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const sortType = useSelector((state) => state.filter.sortType);
   const dispatch = useDispatch();

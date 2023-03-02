@@ -12,7 +12,7 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     changeSearch: (state, action) => {
-      state.search = action.payload
+      state.searchValue = action.payload
     },
     changeSort: (state, action) => {
       state.sortType = action.payload
