@@ -5,6 +5,7 @@ import {SkeletonPizza} from "../Pizza/SkeletonPizza";
 import {NotFoundPizzas} from "./NotFoundPizzas";
 import {useSelector} from "react-redux";
 import {baseUrl} from "../../config";
+import axios from "axios";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
@@ -16,17 +17,18 @@ export function Pizzas() {
     setIsLoaded(false);
     const category = categoryId === 0 ? '' : `&category=${categoryId}`;
     const search = searchValue ? `&search=${searchValue}` : '';
-    const sort = `&sortBy=${sortType}`;
-    const url = `${baseUrl}${category}${search}${sort}`;
+    const sort = `sortBy=${sortType}`;
 
-    fetch(url)
-      .then((respond) => {
-        return respond.json();
+    axios.get(`${baseUrl}${sort}${category}${search}`)
+      .then(function (response) {
+        setPizzas(response.data);
       })
-      .then((arr) => {
-        setPizzas(arr);
+      .catch(function (error) {
+        setPizzas([]);
+      })
+      .finally(function () {
         setIsLoaded(true);
-      })
+      });
 
     window.scrollTo(0, 0);
   }, [sortType, categoryId, searchValue, setPizzas])
