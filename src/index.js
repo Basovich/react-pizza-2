@@ -11,7 +11,7 @@ import {App} from "./App";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <Wrapper>
         <GlobalStyle />
@@ -21,6 +21,6 @@ root.render(
           </BrowserRouter>
         </Container>
       </Wrapper>
-    </Provider>,
-  </React.StrictMode>
+    </Provider>
+  // </React.StrictMode>
 );

@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const StyledErrorContent = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
   flex: 1 1;
-  padding: 0 20px;
+  padding: 20px 20px 80px;
   
   @media (min-width: 1024px) {
     justify-content: center;
@@ -14,11 +15,6 @@ export const StyledErrorContent = styled.section`
   .title {
     font-size: 26px;
     font-weight: 600;
-    margin-top: 80px;
-
-    @media (min-width: 1024px) {
-      margin-top: -60px;
-    }
   }
   
   .text {

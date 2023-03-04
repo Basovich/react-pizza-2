@@ -1,13 +1,18 @@
-import {useCallback, useMemo, useRef, useState} from "react";
-import { useDispatch } from 'react-redux';
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {useDispatch, useSelector} from 'react-redux';
 import debounce from "lodash.debounce";
 import {StyledSearch} from "./StyledSearch";
 import {changeSearch} from "../../redux/slices/filterSlice";
 
 export function Search() {
+  const search = useSelector((state) => state.filter.search);
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const refSearch = useRef();
+
+  useEffect(() => {
+    setValue(search)
+  }, [search]);
 
   const debouncedSearch = useMemo(
     () =>

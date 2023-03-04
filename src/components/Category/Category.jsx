@@ -5,7 +5,7 @@ import {categories} from "../../config";
 import {changeCategoryId} from "../../redux/slices/filterSlice";
 
 export function Category() {
-  const categoryId = useSelector((state) => state.filter.categoryId);
+  const categoryId = useSelector((state) => state.filter.category);
   const dispatch = useDispatch();
 
   return (

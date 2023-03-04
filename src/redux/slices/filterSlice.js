@@ -4,7 +4,7 @@ import {sorts} from "../../config";
 const initialState = {
   search: '',
   sortType: sorts[0],
-  categoryId: 0
+  category: 0,
 };
 
 export const filterSlice = createSlice({
@@ -12,17 +12,22 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     changeSearch: (state, action) => {
-      state.searchValue = action.payload
+      state.search = action.payload
     },
     changeSort: (state, action) => {
       state.sortType = action.payload
     },
     changeCategoryId: (state, action) => {
-      state.categoryId = action.payload
+      state.category = action.payload
     },
+    setFilters: (state, action) => {
+      state.search = action.payload.search;
+      state.sortType = action.payload.sortType;
+      state.category = Number(action.payload.category);
+    }
   },
 });
 
-export const { changeSearch, changeSort, changeCategoryId } = filterSlice.actions;
+export const { changeSearch, changeSort, changeCategoryId, setFilters } = filterSlice.actions;
 
 export default filterSlice.reducer;

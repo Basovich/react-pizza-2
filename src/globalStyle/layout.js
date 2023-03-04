@@ -23,6 +23,7 @@ export const Container = styled.section`
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.03);
   border-radius: 10px;
   padding: 0 12px;
+  flex: 1 1;
   
   @media (min-width: 568px) {
     padding: 0 30px;

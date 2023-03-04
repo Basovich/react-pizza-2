@@ -3,23 +3,38 @@ import {StyledPizzas} from "./StyledPizzas";
 import {Pizza} from "../Pizza";
 import {SkeletonPizza} from "../Pizza/SkeletonPizza";
 import {NotFoundPizzas} from "./NotFoundPizzas";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {baseUrl} from "../../config";
 import axios from "axios";
+import qs from "qs";
+import {useNavigate} from "react-router-dom";
+import {setFilters} from "../../redux/slices/filterSlice";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
   const [isLoaded, setIsLoaded] = useState(false);
   const [pizzas, setPizzas] = useState([]);
-  const {categoryId, searchValue, sortType} = useSelector((state) => state.filter);
+  const {category, search, sortType} = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.replace('?', ''));
+
+      dispatch(setFilters({
+        ...params
+      }))
+    }
+  }, [dispatch])
 
   useEffect(() => {
     setIsLoaded(false);
-    const category = categoryId === 0 ? '' : `&category=${categoryId}`;
-    const search = searchValue ? `&search=${searchValue}` : '';
+    const categoryId = category === 0 ? '' : `&category=${category}`;
+    const searchValue = search ? `&search=${search}` : '';
     const sort = `sortBy=${sortType}`;
 
-    axios.get(`${baseUrl}${sort}${category}${search}`)
+    axios.get(`${baseUrl}${sort}${categoryId}${searchValue}`)
       .then(function (response) {
         setPizzas(response.data);
       })
@@ -31,7 +46,17 @@ export function Pizzas() {
       });
 
     window.scrollTo(0, 0);
-  }, [sortType, categoryId, searchValue, setPizzas])
+  }, [sortType, category, search, setPizzas])
+
+  useEffect(() => {
+    const queryString = qs.stringify({
+      search,
+      sortType,
+      category
+    })
+
+    navigate(`?${queryString}`);
+  }, [sortType, category, search, navigate])
 
   return (
     <>
