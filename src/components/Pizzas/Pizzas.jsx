@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {StyledPizzas} from "./StyledPizzas";
 import {Pizza} from "../Pizza";
 import {SkeletonPizza} from "../Pizza/SkeletonPizza";
@@ -17,6 +17,7 @@ export function Pizzas() {
   const {category, search, sortType} = useSelector((state) => state.filter);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isQueryChanged = useRef(false);
 
   useEffect(() => {
     if (window.location.search) {
@@ -24,28 +25,34 @@ export function Pizzas() {
 
       dispatch(setFilters({
         ...params
-      }))
+      }));
+
+      isQueryChanged.current = true;
     }
   }, [dispatch])
 
   useEffect(() => {
-    setIsLoaded(false);
-    const categoryId = category === 0 ? '' : `&category=${category}`;
-    const searchValue = search ? `&search=${search}` : '';
-    const sort = `sortBy=${sortType}`;
+    if (!isQueryChanged.current) {
+      setIsLoaded(false);
+      const categoryId = category === 0 ? '' : `&category=${category}`;
+      const searchValue = search ? `&search=${search}` : '';
+      const sort = `sortBy=${sortType}`;
 
-    axios.get(`${baseUrl}${sort}${categoryId}${searchValue}`)
-      .then(function (response) {
-        setPizzas(response.data);
-      })
-      .catch(function (error) {
-        setPizzas([]);
-      })
-      .finally(function () {
-        setIsLoaded(true);
-      });
+      axios.get(`${baseUrl}${sort}${categoryId}${searchValue}`)
+        .then(function (response) {
+          setPizzas(response.data);
+        })
+        .catch(function () {
+          setPizzas([]);
+        })
+        .finally(function () {
+          setIsLoaded(true);
+        });
 
-    window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
+    }
+
+    isQueryChanged.current = false;
   }, [sortType, category, search, setPizzas])
 
   useEffect(() => {
