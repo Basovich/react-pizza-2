@@ -46,7 +46,7 @@ export function Pizzas() {
   useEffect(() => {
     if (!isQueryChanged.current) {
       setIsLoaded(false);
-      const categoryId = category === 0 || null ? '' : `&category=${category}`;
+      const categoryId = category === 0 || category === null ? '' : `&category=${category}`;
       const searchValue = search ? `&search=${search}` : '';
       const sort = `sortBy=${sortType}`;
 
