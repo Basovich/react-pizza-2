@@ -1,9 +1,11 @@
 import Logotype from '../../assets/images/logotype.svg';
 import {StyledLogoLink, StyledLogoDiv} from "./StyledLogo";
 import {useLocation} from "react-router";
+import {useSelector} from "react-redux";
 
 export function Logo() {
   const location = useLocation();
+  const filter = useSelector((state) => state.filter);
 
   if (location.pathname === '/' ) {
     return (
@@ -17,7 +19,7 @@ export function Logo() {
     )
   } else {
     return (
-      <StyledLogoLink to="/">
+      <StyledLogoLink to="/" state={{ ...filter }}>
         <img width="38" src={Logotype} alt="Index logo"/>
         <div className="text">
           <h1>React Pizzas</h1>

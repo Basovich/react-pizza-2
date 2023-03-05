@@ -10,6 +10,7 @@ import qs from "qs";
 import {useNavigate} from "react-router-dom";
 import {setFilters} from "../../redux/slices/filterSlice";
 import isequal from "lodash.isequal"
+import {useLocation} from "react-router";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
@@ -20,17 +21,37 @@ export function Pizzas() {
   const navigate = useNavigate();
   const isQueryChanged = useRef(false);
   const isMounted = useRef(false);
+  const { state } = useLocation();
 
   useEffect(() => {
+    if (state) {
+      const queryString = qs.stringify({
+        search,
+        sortType,
+        category
+      }, { addQueryPrefix: true });
 
+      const currentParams = {
+        search,
+        sortType,
+        category
+      }
+
+      if (isequal(state, currentParams)) {
+        navigate(`${queryString}`);
+      }
+    }
+  }, [state, sortType, category, search, navigate])
+
+  useEffect(() => {
     if (isMounted.current) {
       const queryString = qs.stringify({
         search,
         sortType,
         category
-      })
+      }, { addQueryPrefix: true });
 
-      navigate(`?${queryString}`);
+      navigate(`${queryString}`);
     }
 
     isMounted.current = true;
