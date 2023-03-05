@@ -4,7 +4,7 @@ import {sorts} from "../../config";
 const initialState = {
   search: '',
   sortType: sorts[0],
-  category: null,
+  category: 0,
 };
 
 export const filterSlice = createSlice({

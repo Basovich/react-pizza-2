@@ -9,6 +9,7 @@ import axios from "axios";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
 import {setFilters} from "../../redux/slices/filterSlice";
+import isequal from "lodash.isequal"
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
@@ -21,6 +22,7 @@ export function Pizzas() {
   const isMounted = useRef(false);
 
   useEffect(() => {
+
     if (isMounted.current) {
       const queryString = qs.stringify({
         search,
@@ -37,16 +39,23 @@ export function Pizzas() {
   useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.replace('?', ''));
+      const currentParams = {
+        search,
+        sortType,
+        category: `${category}`
+      }
 
-      dispatch(setFilters(params));
-      isQueryChanged.current = true;
+      if (!isequal(params, currentParams)) {
+        dispatch(setFilters(params));
+        isQueryChanged.current = true;
+      }
     }
-  }, [dispatch])
+  }, [dispatch, category, search, sortType])
 
   useEffect(() => {
     if (!isQueryChanged.current) {
       setIsLoaded(false);
-      const categoryId = category === 0 || category === null ? '' : `&category=${category}`;
+      const categoryId = category === 0 ? '' : `&category=${category}`;
       const searchValue = search ? `&search=${search}` : '';
       const sort = `sortBy=${sortType}`;
 
