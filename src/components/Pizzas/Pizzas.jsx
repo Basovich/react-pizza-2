@@ -18,15 +18,27 @@ export function Pizzas() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isQueryChanged = useRef(false);
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        search,
+        sortType,
+        category
+      })
+
+      navigate(`?${queryString}`);
+    }
+
+    isMounted.current = true;
+  }, [sortType, category, search, navigate, dispatch])
 
   useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.replace('?', ''));
 
-      dispatch(setFilters({
-        ...params
-      }));
-
+      dispatch(setFilters(params));
       isQueryChanged.current = true;
     }
   }, [dispatch])
@@ -34,7 +46,7 @@ export function Pizzas() {
   useEffect(() => {
     if (!isQueryChanged.current) {
       setIsLoaded(false);
-      const categoryId = category === 0 ? '' : `&category=${category}`;
+      const categoryId = category === 0 || null ? '' : `&category=${category}`;
       const searchValue = search ? `&search=${search}` : '';
       const sort = `sortBy=${sortType}`;
 
@@ -54,16 +66,6 @@ export function Pizzas() {
 
     isQueryChanged.current = false;
   }, [sortType, category, search, setPizzas])
-
-  useEffect(() => {
-    const queryString = qs.stringify({
-      search,
-      sortType,
-      category
-    })
-
-    navigate(`?${queryString}`);
-  }, [sortType, category, search, navigate])
 
   return (
     <>
