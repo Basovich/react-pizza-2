@@ -1,4 +1,5 @@
 import styled, {css} from "styled-components";
+import {Link} from "react-router-dom";
 
 export const StyledButton = styled.button`
   display: flex;
@@ -11,6 +12,28 @@ export const StyledButton = styled.button`
 
   ${(props) => {
     switch (props.$btnType) {
+      case "primary-orange":
+        return css`
+          border: 2px solid #FE5F1E;
+          background-color: #FE5F1E;
+          color: #fff;
+          transition: transform .2s;
+
+          &:active {
+            transform: translateY(2px);
+          }
+
+          @media (any-hover: hover) {
+            &:hover {
+              background-color: rgba(254, 71, 1, 1);
+            }
+          }
+
+          &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(254, 95, 30, .4);
+          }
+        `;
       case "primary":
         return css`
           border: 2px solid #222;
@@ -31,6 +54,13 @@ export const StyledButton = styled.button`
             &:hover {
               background-color: #000;
             }
+          }
+
+          .icon {
+            fill: #fff;
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
           }
         `;
       case "secondary":
@@ -115,8 +145,55 @@ export const StyledButton = styled.button`
               }
             }
           }
-        `;  
-        default:
+        `;
+      default:
+        return css``;
+    }
+  }}
+`;
+
+export const StyledLinkButton = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+
+  ${(props) => {
+    switch (props.$btnLinkType) {
+      case "primary":
+        return css`
+          border: 2px solid #222;
+          background-color: #222;
+          color: #fff;
+          transition: transform .2s;
+
+          &:active {
+            transform: translateY(2px);
+          }
+
+          &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(34, 34, 34, .4);
+          }
+
+          @media (any-hover: hover) {
+            &:hover {
+              background-color: #000;
+            }
+          }
+
+          .icon {
+            fill: #fff;
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
+          }
+        `;
+      default:
         return css``;
     }
   }}
