@@ -9,6 +9,21 @@ export const StyledCart = styled.div`
   }
 `;
 
+export const StyleEmptyCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  
+  & > .icon {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 260px;
+    height: auto;
+  }
+`;
+
 export const StyledCartHead = styled.div`
   display: flex;
   align-items: center;
