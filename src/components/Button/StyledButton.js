@@ -156,6 +156,7 @@ export const StyledLinkButton = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 36px;
   padding: 8px 24px;
   border-radius: 30px;
   font-weight: 700;
