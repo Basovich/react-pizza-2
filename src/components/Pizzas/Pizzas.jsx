@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import {StyledPizzas} from "./StyledPizzas";
-import {Pizza} from "../Pizza";
+import {Pizza} from "../Pizza/Pizza";
 import {SkeletonPizza} from "../Pizza/SkeletonPizza";
 import {NotFoundPizzas} from "./NotFoundPizzas";
 import {useDispatch, useSelector} from "react-redux";
@@ -22,7 +22,8 @@ export function Pizzas() {
   const isQueryChanged = useRef(false);
   const isMounted = useRef(false);
   const { state } = useLocation();
-
+  const pizzasState = useSelector((state) => state.pizzas);
+  console.log(pizzasState);
   useEffect(() => {
     if (state) {
       const queryString = qs.stringify({
