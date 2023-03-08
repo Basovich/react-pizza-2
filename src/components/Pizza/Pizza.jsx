@@ -1,15 +1,18 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {StyledPizza} from "./StyledPizza";
 import {Button} from "../Button/Button";
-import {useDispatch} from "react-redux";
-import {addPizza} from "../../redux/slices/pizzasSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {changeCart} from "../../redux/slices/cartSlice";
+import clonedeep from "lodash.clonedeep";
 
-export function Pizza({imageUrl, name, about, types, sizes, prices}) {
+export function Pizza({ id, imageUrl, name, about, types, sizes, prices}) {
   const [typePizza, setTypePizza] = useState(types[0]);
   const [sizePizza, setSizePizza] = useState(0);
   const [addedPizza, setAddedPizza] = useState(0);
   const [pricePizza, setPricePizza] = useState(prices[typePizza][0]);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
 
   const handleOnClickTypePizza = (type) => {
     setTypePizza(type);
@@ -21,10 +24,56 @@ export function Pizza({imageUrl, name, about, types, sizes, prices}) {
     setPricePizza(prices[typePizza][size]);
   }
 
-  const handleOnAddPizza = () => {
-    dispatch(addPizza({name, about, pricePizza}));
+  const handleOnAddPizza = useCallback(() => {
+    let newPizzas = clonedeep(cart.pizzas);
+
+    if (newPizzas.length) {
+      let indexPizza = false;
+
+      newPizzas.forEach((pizza, index) => {
+        if (pizza.id === id
+        && pizza.name === name
+        && pizza.typePizza === typePizza
+        && pizza.sizePizza === sizePizza) {
+          indexPizza = index;
+        }
+      });
+
+      if (indexPizza !== false) {
+        newPizzas[indexPizza].count = newPizzas[indexPizza].count + 1;
+      } else {
+        newPizzas.push({
+          id,
+          name,
+          about,
+          imageUrl,
+          typePizza,
+          sizePizza,
+          pricePizza,
+          count: 1
+        })
+      }
+    } else {
+      newPizzas.push({
+        id,
+        name,
+        about,
+        imageUrl,
+        typePizza,
+        sizePizza,
+        pricePizza,
+        count: 1
+      })
+    }
+
+    dispatch(changeCart({
+      pizzas: newPizzas,
+      totalPrice: Number(cart.totalPrice) + Number(pricePizza),
+      totalCount: Number(cart.totalCount) + 1
+    }));
+
     setAddedPizza(addedPizza + 1);
-  }
+  }, [id, about, pricePizza, imageUrl, typePizza, sizePizza, name, addedPizza, cart, dispatch])
 
 
   return (

@@ -17,13 +17,12 @@ export function Pizzas() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [pizzas, setPizzas] = useState([]);
   const {category, search, sortType} = useSelector((state) => state.filter);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isQueryChanged = useRef(false);
   const isMounted = useRef(false);
   const { state } = useLocation();
-  const pizzasState = useSelector((state) => state.pizzas);
-  console.log(pizzasState);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (state) {
       const queryString = qs.stringify({
@@ -56,7 +55,7 @@ export function Pizzas() {
     }
 
     isMounted.current = true;
-  }, [sortType, category, search, navigate, dispatch])
+  }, [sortType, category, search, navigate])
 
   useEffect(() => {
     if (window.location.search) {

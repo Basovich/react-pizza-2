@@ -3,8 +3,9 @@ import {Link} from "react-router-dom";
 
 export const StyledCartButton = styled(Link)`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  width: 180px;
   border: 0;
   background-color: rgba(254, 95, 30, 1);
   border-radius: 30px;
