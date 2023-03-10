@@ -33,15 +33,14 @@ export function Cart() {
                   Clear basket
                 </StyledClearCartButton>
               </StyledCartHead>
-              <CartPizza/>
-              <CartPizza/>
+              {cart.pizzas.map((pizza) => <CartPizza key={`${pizza.id}-${pizza.typePizza}-${pizza.sizePizza}}`} {...pizza} />)}
               <StyledCartTotal>
                 <div className="total">
                   <p className="total-label">
                     Total pizzas:
                   </p>
                   <p className="total-count">
-                    3 un.
+                    {cart.totalCount} un.
                   </p>
                 </div>
                 <div className="total">
@@ -49,7 +48,7 @@ export function Cart() {
                     Order amount:
                   </p>
                   <p className="total-price">
-                    900 $
+                    {cart.totalPrice} $
                   </p>
                 </div>
               </StyledCartTotal>

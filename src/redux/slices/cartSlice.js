@@ -6,21 +6,12 @@ const initialState = {
   totalPrice: 0,
 };
 
-// id: id
-// name: ''
-// about: ''
-// price: ''
-// type: ''
-// size: ''
-// count: ''
-
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
     changeCart: (state, action) => {
       console.log(action.payload)
-      // console.log(typeof action.payload.pizzas[0].count)
       state.pizzas = action.payload.pizzas;
       state.totalCount = action.payload.totalCount;
       state.totalPrice = action.payload.totalPrice;

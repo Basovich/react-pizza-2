@@ -9,7 +9,7 @@ import axios from "axios";
 import qs from "qs";
 import {useNavigate} from "react-router-dom";
 import {setFilters} from "../../redux/slices/filterSlice";
-import isequal from "lodash.isequal"
+import isequal from "lodash.isequal";
 import {useLocation} from "react-router";
 
 export function Pizzas() {

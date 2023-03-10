@@ -5,7 +5,7 @@ export const StyledCart = styled.div`
   
   @media (min-width: 768px) {
     max-width: 700px;
-    margin: 80px auto;
+    margin: 40px auto 80px;
   }
 `;
 
