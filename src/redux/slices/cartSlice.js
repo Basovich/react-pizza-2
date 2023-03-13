@@ -11,10 +11,15 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     changeCart: (state, action) => {
-      console.log(action.payload)
       state.pizzas = action.payload.pizzas;
       state.totalCount = action.payload.totalCount;
       state.totalPrice = action.payload.totalPrice;
+
+      localStorage.setItem('pizzas', JSON.stringify({
+        pizzas: state.pizzas,
+        totalCount: state.totalCount,
+        totalPrice: state.totalPrice,
+      }));
     }
   },
 });

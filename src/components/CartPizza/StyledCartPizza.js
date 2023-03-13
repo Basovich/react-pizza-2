@@ -42,7 +42,7 @@ export const StyledCartPizzaHead = styled.div`
     }
   }
 
-  & > .compound {
+  & > .about {
     font-weight: 400;
     font-size: 12px;
     line-height: 120%;
@@ -51,6 +51,12 @@ export const StyledCartPizzaHead = styled.div`
 
     @media (min-width: 600px) {
       font-size: 14px;
+    }
+    
+    & > b {
+      display: inline-block;
+      margin-right: 4px;
+      font-weight: 600;
     }
   }
 `;
