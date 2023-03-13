@@ -8,10 +8,9 @@ import {
   StyledCartPizzaImg,
   StyledCartPizzaRemove
 } from "./StyledCartPizza";
-import {types} from "../../config";
+import {sizes} from "../../config";
 import {changeCart} from "../../redux/slices/cartSlice";
 import clonedeep from "lodash.clonedeep";
-
 
 export function CartPizza({id, name, about, imageUrl, typePizza, sizePizza, pricePizza, count}) {
   const cart = useSelector((state) => state.cart);
@@ -87,7 +86,7 @@ export function CartPizza({id, name, about, imageUrl, typePizza, sizePizza, pric
           {about}
           <br/>
           <br/>
-          Type: <b>{typePizza}</b>, size: <b>{types[+sizePizza]}</b>
+          Type: <b>{typePizza}</b>, size: <b>{sizes[+sizePizza]}</b>
         </p>
       </StyledCartPizzaHead>
       <StyledCartPizzaControls>

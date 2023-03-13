@@ -1,5 +1,5 @@
 export const sorts = ['popular', 'price'];
-export const types = ['thin', 'traditional'];
+export const sizes = [26, 30, 40];
 
 export const categories = [
   'All',
