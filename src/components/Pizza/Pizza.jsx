@@ -1,4 +1,4 @@
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import clonedeep from "lodash.clonedeep";
 import {changeCart} from "../../redux/slices/cartSlice";
@@ -13,18 +13,32 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const handleOnClickTypePizza = (type) => {
+  const getIndex = useCallback((pizzas) => {
+    let index = false;
+
+    pizzas.forEach((pizza, i) => {
+      if ( pizza.id === id
+        && pizza.typePizza === typePizza
+        && pizza.sizePizza === sizePizza) {
+        index = i;
+      }
+    });
+
+    return index;
+  }, [id, sizePizza, typePizza]);
+
+  const handleOnClickTypePizza = useCallback((type) => {
     setTypePizza(type);
     setPricePizza(prices[type][sizePizza]);
-  }
+  }, [prices, sizePizza])
 
-  const handleOnClickSizePizza = (size) => {
+  const handleOnClickSizePizza = useCallback((size) => {
     setSizePizza(size);
     setPricePizza(prices[typePizza][size]);
-  }
+  }, [typePizza, prices])
 
   const handleOnAddPizza = useCallback(() => {
-    let newPizzas = clonedeep(cart.pizzas);
+    let pizzas = clonedeep(cart.pizzas);
     const newPizza = {
       id,
       name,
@@ -36,34 +50,38 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
       count: 1
     }
 
-    if (newPizzas.length) {
-      let findIndexPizza = false;
+    if (pizzas.length) {
+      const index = getIndex(pizzas);
 
-      newPizzas.forEach((pizza, index) => {
-        if ( pizza.id === id
-        && pizza.typePizza === typePizza
-        && pizza.sizePizza === sizePizza) {
-          findIndexPizza = index;
-        }
-      });
-
-      if (findIndexPizza !== false) {
-        newPizzas[findIndexPizza].count = newPizzas[findIndexPizza].count + 1;
+      if (index !== false) {
+        pizzas[index].count = pizzas[index].count + 1;
       } else {
-        newPizzas.push(newPizza)
+        pizzas.push(newPizza)
       }
     } else {
-      newPizzas.push(newPizza)
+      pizzas.push(newPizza)
     }
 
     dispatch(changeCart({
-      pizzas: newPizzas,
+      pizzas: pizzas,
       totalPrice: Number(cart.totalPrice) + Number(pricePizza),
       totalCount: Number(cart.totalCount) + 1
     }));
 
     setAddedPizza(addedPizza + 1);
-  }, [id, about, pricePizza, imageUrl, typePizza, sizePizza, name, addedPizza, cart, dispatch])
+  }, [id, about, pricePizza, imageUrl, typePizza, sizePizza, name, addedPizza, cart, dispatch, getIndex])
+
+  useEffect(() => {
+    const pizzas = clonedeep(cart.pizzas);
+    const currentPizzas = pizzas.filter((pizza) => pizza.id === id);
+    let count = 0;
+
+    currentPizzas.forEach((pizza) => {
+      count = count + pizza.count;
+    })
+
+    setAddedPizza(count);
+  }, [cart, id])
 
   return (
     <StyledPizza>

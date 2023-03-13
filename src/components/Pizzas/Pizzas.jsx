@@ -11,6 +11,7 @@ import {useNavigate} from "react-router-dom";
 import {setFilters} from "../../redux/slices/filterSlice";
 import isequal from "lodash.isequal";
 import {useLocation} from "react-router";
+import {changeCart} from "../../redux/slices/cartSlice";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
@@ -22,6 +23,16 @@ export function Pizzas() {
   const isMounted = useRef(false);
   const { state } = useLocation();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const pizzas = JSON.parse(localStorage.getItem('pizzas'));
+
+    if (pizzas) {
+      dispatch(changeCart({
+        ...pizzas
+      }))
+    }
+  }, [dispatch])
 
   useEffect(() => {
     if (state) {
