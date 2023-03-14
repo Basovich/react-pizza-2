@@ -31,7 +31,7 @@ export function Cart() {
 
   return (
     <>
-      <Header isNeedCartButton={false}/>
+      <Header />
       <StyledCart>
         {
           cart.pizzas.length

@@ -6,7 +6,7 @@ import {Header} from "../components/Header/Header";
 export function Home() {
   return (
     <>
-      <Header isNeedSearch={true}/>
+      <Header />
       <Filters />
       <Title>All pizzas</Title>
       <Pizzas />
