@@ -1,7 +1,9 @@
-export function NotFoundPizzas() {
+import {StyledNotFound} from "./StyledPizzas";
+
+export function NotFoundPizzas(props) {
   return (
-    <>
-      <h1 className="not-found">Not found!</h1>
-    </>
+    <StyledNotFound>
+      <h1 className="not-found-text">{props.children}</h1>
+    </StyledNotFound>
   )
 }

@@ -1,23 +1,22 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef} from "react";
+import {useNavigate, useLocation} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import qs from "qs";
+import isequal from "lodash.isequal";
+
+import {setFilters} from "../../redux/slices/filterSlice";
+import {changeCart} from "../../redux/slices/cartSlice";
+import {fetchPizzas} from "../../redux/slices/pizzasSlice";
+
 import {StyledPizzas} from "./StyledPizzas";
 import {Pizza} from "../Pizza/Pizza";
 import {SkeletonPizza} from "../Pizza/SkeletonPizza";
 import {NotFoundPizzas} from "./NotFoundPizzas";
-import {useDispatch, useSelector} from "react-redux";
-import {baseUrl} from "../../config";
-import axios from "axios";
-import qs from "qs";
-import {useNavigate} from "react-router-dom";
-import {setFilters} from "../../redux/slices/filterSlice";
-import isequal from "lodash.isequal";
-import {useLocation} from "react-router";
-import {changeCart} from "../../redux/slices/cartSlice";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [pizzas, setPizzas] = useState([]);
   const {category, search, sortType} = useSelector((state) => state.filter);
+  const {pizzas, status} = useSelector((state) => state.pizzas);
   const navigate = useNavigate();
   const isQueryChanged = useRef(false);
   const isMounted = useRef(false);
@@ -86,39 +85,41 @@ export function Pizzas() {
 
   useEffect(() => {
     if (!isQueryChanged.current) {
-      setIsLoaded(false);
       const categoryId = category === 0 ? '' : `&category=${category}`;
       const searchValue = search ? `&search=${search}` : '';
       const sort = `sortBy=${sortType}`;
 
-      axios.get(`${baseUrl}${sort}${categoryId}${searchValue}`)
-        .then(function (response) {
-          setPizzas(response.data);
-        })
-        .catch(function () {
-          setPizzas([]);
-        })
-        .finally(function () {
-          setIsLoaded(true);
-        });
+      dispatch(fetchPizzas({
+        sort,
+        categoryId,
+        searchValue
+      }));
 
       window.scrollTo(0, 0);
     }
 
     isQueryChanged.current = false;
-  }, [sortType, category, search, setPizzas])
+  }, [dispatch, sortType, category, search])
 
   return (
     <>
-      <StyledPizzas>
         {
-          isLoaded
-            ? pizzas.length
-            ? pizzas.map((pizza) => <Pizza key={pizza.id} {...pizza} />)
-            : <NotFoundPizzas/>
-            : skeletons
+          status === 'error'
+            ? <NotFoundPizzas>
+                An error occurred! No pizzas found! Try later!
+              </NotFoundPizzas>
+            : status === 'loading'
+              ? <StyledPizzas>
+                  {skeletons}
+                </StyledPizzas>
+              : pizzas.length
+                ? <StyledPizzas>
+                    {pizzas.map((pizza) => <Pizza key={pizza.id} {...pizza} />)}
+                  </StyledPizzas>
+                : <NotFoundPizzas>
+                    No pizzas were found for your request. Try changing the search filter.
+                  </NotFoundPizzas>
         }
-      </StyledPizzas>
     </>
   )
 }

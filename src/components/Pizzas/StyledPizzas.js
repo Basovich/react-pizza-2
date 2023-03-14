@@ -33,9 +33,14 @@ export const StyledPizzas = styled.div`
       border-bottom: 0;
     }
   }
-  
-  .not-found {
-    width: 100%;
-    font-size: 30px;
-  }
+`;
+
+export const StyledNotFound = styled.span`
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: center;
+  font-size: 24px;
+  line-height: 160%;
 `;
