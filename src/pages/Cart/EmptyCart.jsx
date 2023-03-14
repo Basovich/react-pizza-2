@@ -2,9 +2,10 @@ import {useSelector} from "react-redux";
 import {StyleEmptyCart} from "./StyledCart";
 import {Title} from "../../components/Title/Title";
 import {LinkButton} from "../../components/Button/Button";
+import {selectFilter} from "../../redux/slices/filterSlice";
 
 export function EmptyCart() {
-  const filter = useSelector((state) => state.filter);
+  const filter = useSelector(selectFilter);
 
   return (
     <StyleEmptyCart>

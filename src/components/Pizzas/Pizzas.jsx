@@ -4,9 +4,9 @@ import {useDispatch, useSelector} from "react-redux";
 import qs from "qs";
 import isequal from "lodash.isequal";
 
-import {setFilters} from "../../redux/slices/filterSlice";
+import {selectFilter, setFilters} from "../../redux/slices/filterSlice";
 import {changeCart} from "../../redux/slices/cartSlice";
-import {fetchPizzas} from "../../redux/slices/pizzasSlice";
+import {fetchPizzas, selectPizzas} from "../../redux/slices/pizzasSlice";
 
 import {StyledPizzas} from "./StyledPizzas";
 import {Pizza} from "../Pizza/Pizza";
@@ -15,8 +15,8 @@ import {NotFoundPizzas} from "./NotFoundPizzas";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
-  const {category, search, sortType} = useSelector((state) => state.filter);
-  const {pizzas, status} = useSelector((state) => state.pizzas);
+  const {category, search, sortType} = useSelector(selectFilter);
+  const {pizzas, status} = useSelector(selectPizzas);
   const navigate = useNavigate();
   const isQueryChanged = useRef(false);
   const isMounted = useRef(false);

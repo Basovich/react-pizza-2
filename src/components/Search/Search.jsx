@@ -2,10 +2,10 @@ import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import debounce from "lodash.debounce";
 import {StyledSearch} from "./StyledSearch";
-import {changeSearch} from "../../redux/slices/filterSlice";
+import {changeSearch, selectSearch} from "../../redux/slices/filterSlice";
 
 export function Search() {
-  const search = useSelector((state) => state.filter.search);
+  const search = useSelector(selectSearch);
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   const refSearch = useRef();

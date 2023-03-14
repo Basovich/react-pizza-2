@@ -12,13 +12,14 @@ import {
 } from "./StyledCart";
 import {CartPizza} from "../../components/CartPizza/CartPizza";
 import {Button, LinkButton} from "../../components/Button/Button";
-import {changeCart} from "../../redux/slices/cartSlice";
+import {changeCart, selectCart} from "../../redux/slices/cartSlice";
 import {EmptyCart} from "./EmptyCart";
+import {selectFilter} from "../../redux/slices/filterSlice";
 
 export function Cart() {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector(selectCart);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filter);
 
   const handleOnClickClearCart = useCallback(() => {
     dispatch(changeCart({

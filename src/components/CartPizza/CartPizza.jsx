@@ -9,11 +9,11 @@ import {
   StyledCartPizzaRemove
 } from "./StyledCartPizza";
 import {sizes} from "../../config";
-import {changeCart} from "../../redux/slices/cartSlice";
+import {changeCart, selectCart} from "../../redux/slices/cartSlice";
 import clonedeep from "lodash.clonedeep";
 
 export function CartPizza({id, name, about, imageUrl, typePizza, sizePizza, pricePizza, count}) {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector(selectCart);
   const dispatch = useDispatch();
 
   const getPizzaIndex = useCallback((pizzas) => {

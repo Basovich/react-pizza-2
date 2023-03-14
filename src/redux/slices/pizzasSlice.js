@@ -4,7 +4,7 @@ import {baseUrl} from "../../config";
 
 export const fetchPizzas = createAsyncThunk(
   'pizzas/fetchPizzasStatus',
-  async ({...params}) => {
+  async ({...params}, thunkAPI) => {
     const { sort, categoryId, searchValue } = params;
     const {data} = await axios.get(`${baseUrl}${sort}${categoryId}${searchValue}`);
     return data;
@@ -37,5 +37,7 @@ export const pizzasSlice = createSlice({
     })
   },
 });
+
+export const selectPizzas = (state) => state.pizzas;
 
 export default pizzasSlice.reducer;

@@ -2,10 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import {StyledCategory} from "./StyledCategory";
 import {Button} from "../Button/Button";
 import {categories} from "../../config";
-import {changeCategoryId} from "../../redux/slices/filterSlice";
+import {changeCategoryId, selectCategory} from "../../redux/slices/filterSlice";
 
 export function Category() {
-  const categoryId = useSelector((state) => state.filter.category);
+  const categoryId = useSelector(selectCategory);
   const dispatch = useDispatch();
 
   return (

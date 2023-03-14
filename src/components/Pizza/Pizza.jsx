@@ -1,8 +1,9 @@
 import {useCallback, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import clonedeep from "lodash.clonedeep";
-import {changeCart} from "../../redux/slices/cartSlice";
+
 import {StyledPizza} from "./StyledPizza";
+import {changeCart, selectCart} from "../../redux/slices/cartSlice";
 import {Button} from "../Button/Button";
 
 export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
@@ -10,7 +11,7 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
   const [sizePizza, setSizePizza] = useState(0);
   const [addedPizza, setAddedPizza] = useState(0);
   const [pricePizza, setPricePizza] = useState(prices[typePizza][0]);
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector(selectCart);
   const dispatch = useDispatch();
 
   const getIndex = useCallback((pizzas) => {
@@ -73,12 +74,11 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
 
   useEffect(() => {
     const pizzas = clonedeep(cart.pizzas);
-    const currentPizzas = pizzas.filter((pizza) => pizza.id === id);
-    let count = 0;
-
-    currentPizzas.forEach((pizza) => {
-      count = count + pizza.count;
-    })
+    const count = pizzas
+      .filter((pizza) => pizza.id === id)
+      .reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue.count;
+      }, 0);
 
     setAddedPizza(count);
   }, [cart, id])

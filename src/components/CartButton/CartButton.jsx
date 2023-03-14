@@ -1,8 +1,9 @@
 import {StyledCartButton} from "./StyledCartButton";
 import {useSelector} from "react-redux";
+import {selectCart} from "../../redux/slices/cartSlice";
 
 export function CartButton() {
-  const {totalCount, totalPrice} = useSelector((state) => state.cart);
+  const {totalCount, totalPrice} = useSelector(selectCart);
 
   return (
     <StyledCartButton to="/cart">
