@@ -3,21 +3,22 @@ import {
   Route,
 } from "react-router-dom";
 
-import {Header} from "./components/Header/Header";
 import {Home} from "./pages/Home";
 import {Cart} from "./pages/Cart/Cart";
 import {Thanks} from "./pages/Thanks";
 import {Error} from "./pages/Error/Error";
+import {DefaultLayout} from "./Layout/DefaultLayout";
 
 export function App() {
   return (
     <>
-      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="thanks" element={<Thanks />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="" element={<Home />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="thanks" element={<Thanks />} />
+          <Route path="*" element={<Error />} />
+        </Route>
       </Routes>
     </>
   )
