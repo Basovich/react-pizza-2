@@ -7,7 +7,7 @@ import {Home} from "./pages/Home";
 import {Cart} from "./pages/Cart/Cart";
 import {Thanks} from "./pages/Thanks";
 import {Error} from "./pages/Error/Error";
-import {DefaultLayout} from "./Layout/DefaultLayout";
+import {DefaultLayout} from "./layouts/DefaultLayout";
 
 export function App() {
   return (
