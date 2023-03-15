@@ -1,6 +1,6 @@
 import {StyledErrorContent} from "./StyledError";
 
-export function ErrorContent() {
+export function Error() {
   return (
     <StyledErrorContent>
       <h1 className="title">Oops!</h1>
@@ -10,4 +10,3 @@ export function ErrorContent() {
     </StyledErrorContent>
   )
 }
-

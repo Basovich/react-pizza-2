@@ -8,7 +8,6 @@ import {selectFilter, setFilters} from "../redux/slices/filterSlice";
 import {changeCart} from "../redux/slices/cartSlice";
 import {fetchPizzas} from "../redux/slices/pizzasSlice";
 
-import {Header} from "../components/Header/Header";
 import {Filters} from "../components/Filters/Filters";
 import {Title} from "../components/Title/Title";
 import {Pizzas} from "../components/Pizzas/Pizzas";
@@ -101,7 +100,6 @@ export function Home() {
 
   return (
     <>
-      <Header />
       <Filters />
       <Title>All pizzas</Title>
       <Pizzas />

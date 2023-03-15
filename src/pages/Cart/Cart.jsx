@@ -1,6 +1,12 @@
 import {useCallback} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Header} from "../../components/Header/Header";
+
+import {changeCart, selectCart} from "../../redux/slices/cartSlice";
+import {selectFilter} from "../../redux/slices/filterSlice";
+
+import {CartPizza} from "../../components/CartPizza/CartPizza";
+import {Button, LinkButton} from "../../components/Button/Button";
+import {EmptyCart} from "./EmptyCart";
 import {Title} from "../../components/Title/Title";
 import {
   StyledClearCartButton,
@@ -10,11 +16,6 @@ import {
   StyledCartTotal,
   StyledCartBottom
 } from "./StyledCart";
-import {CartPizza} from "../../components/CartPizza/CartPizza";
-import {Button, LinkButton} from "../../components/Button/Button";
-import {changeCart, selectCart} from "../../redux/slices/cartSlice";
-import {EmptyCart} from "./EmptyCart";
-import {selectFilter} from "../../redux/slices/filterSlice";
 
 export function Cart() {
   const cart = useSelector(selectCart);
@@ -30,9 +31,7 @@ export function Cart() {
   }, [dispatch])
 
   return (
-    <>
-      <Header />
-      <StyledCart>
+    <StyledCart>
         {
           cart.pizzas.length
             ? <>
@@ -91,7 +90,6 @@ export function Cart() {
             </>
             : <EmptyCart />
         }
-      </StyledCart>
-    </>
+  </StyledCart>
   )
 }
