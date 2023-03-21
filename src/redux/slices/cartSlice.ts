@@ -1,6 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {RootState} from "../store";
 
-const initialState = {
+interface PizzaInterface {
+  id: number
+  name: string
+  about: string
+  imageUrl: string
+  typePizza: string
+  sizePizza: number
+  pricePizza: number
+  count: number
+}
+
+interface CartInterface {
+  pizzas: PizzaInterface[]
+  totalCount: number
+  totalPrice: number
+}
+
+const initialState: CartInterface = {
   pizzas: [],
   totalCount: 0,
   totalPrice: 0,
@@ -10,7 +28,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    changeCart: (state, action) => {
+    changeCart: (state: CartInterface, action) => {
       state.pizzas = action.payload.pizzas;
       state.totalCount = action.payload.totalCount;
       state.totalPrice = action.payload.totalPrice;
@@ -24,7 +42,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const selectCart = (state) => state.cart;
+export const selectCart = (state: RootState) => state.cart;
 
 export const { changeCart } = cartSlice.actions;
 
