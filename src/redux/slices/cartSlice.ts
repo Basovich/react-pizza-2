@@ -1,15 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from "../store";
 
 interface PizzaInterface {
-  id: number
-  name: string
-  about: string
-  imageUrl: string
-  typePizza: string
-  sizePizza: number
-  pricePizza: number
-  count: number
+  id: number;
+  name: string;
+  about: string;
+  imageUrl: string;
+  typePizza: string;
+  sizePizza: number;
+  pricePizza: number;
+  count: number;
 }
 
 interface CartInterface {
@@ -28,7 +28,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    changeCart: (state: CartInterface, action) => {
+    changeCart: (state: CartInterface, action: PayloadAction<CartInterface>) => {
       state.pizzas = action.payload.pizzas;
       state.totalCount = action.payload.totalCount;
       state.totalPrice = action.payload.totalPrice;

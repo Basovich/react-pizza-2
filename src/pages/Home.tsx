@@ -1,8 +1,9 @@
 import {useEffect, useRef} from "react";
 import {useLocation, useNavigate} from "react-router";
-import {useDispatch, useSelector} from "react-redux";
 import qs from "qs";
 import isequal from "lodash.isequal";
+
+import {useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 
 import {selectFilter, setFilters} from "../redux/slices/filterSlice";
 import {changeCart} from "../redux/slices/cartSlice";
@@ -14,14 +15,13 @@ import {Pizzas} from "../components/Pizzas/Pizzas";
 
 export function Home() {
   const navigate = useNavigate();
-  const isQueryChanged = useRef(false);
   const isMounted = useRef(false);
   const { state } = useLocation();
-  const dispatch = useDispatch();
-  const {category, search, sortType} = useSelector(selectFilter);
+  const {category, search, sortType} = useAppSelector(selectFilter);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const pizzas = JSON.parse(localStorage.getItem('pizzas'));
+    const pizzas = JSON.parse(localStorage.getItem('pizzas') as string);
 
     if (pizzas) {
       dispatch(changeCart({
@@ -65,8 +65,10 @@ export function Home() {
   }, [sortType, category, search, navigate])
 
   useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.replace('?', ''));
+    const {search} = window.location;
+
+    if (search) {
+      const params = qs.parse(search.replace('?', ''));
       const currentParams = {
         search,
         sortType,
@@ -74,17 +76,16 @@ export function Home() {
       }
 
       if (!isequal(params, currentParams)) {
+
         dispatch(setFilters(params));
-        isQueryChanged.current = true;
       }
     }
   }, [dispatch, category, search, sortType])
 
   useEffect(() => {
-    if (!isQueryChanged.current) {
-      const categoryId = category === 0 ? '' : `&category=${category}`;
-      const searchValue = search ? `&search=${search}` : '';
-      const sort = `sortBy=${sortType}`;
+      const categoryId: string = category === 0 ? '' : `&category=${category}`;
+      const searchValue: string = search ? `&search=${search}` : '';
+      const sort: string = `sortBy=${sortType}`;
 
       dispatch(fetchPizzas({
         sort,
@@ -93,9 +94,6 @@ export function Home() {
       }));
 
       window.scrollTo(0, 0);
-    }
-
-    isQueryChanged.current = false;
   }, [dispatch, sortType, category, search])
 
   return (
