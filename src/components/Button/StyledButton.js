@@ -1,9 +1,9 @@
-import styled, {css} from "styled-components";
-import {Link} from "react-router-dom";
+import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const StyledButton = styled.button`
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
   padding: 8px 24px;
   border-radius: 30px;
@@ -14,10 +14,10 @@ export const StyledButton = styled.button`
     switch (props.$btnType) {
       case "primary-orange":
         return css`
-          border: 2px solid #FE5F1E;
-          background-color: #FE5F1E;
+          border: 2px solid #fe5f1e;
+          background-color: #fe5f1e;
           color: #fff;
-          transition: transform .2s;
+          transition: transform 0.2s;
 
           &:active {
             transform: translateY(2px);
@@ -31,7 +31,7 @@ export const StyledButton = styled.button`
 
           &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(254, 95, 30, .4);
+            box-shadow: 0 0 0 3px rgba(254, 95, 30, 0.4);
           }
         `;
       case "primary":
@@ -39,7 +39,7 @@ export const StyledButton = styled.button`
           border: 2px solid #222;
           background-color: #222;
           color: #fff;
-          transition: transform .2s;
+          transition: transform 0.2s;
 
           &:active {
             transform: translateY(2px);
@@ -47,7 +47,7 @@ export const StyledButton = styled.button`
 
           &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(34, 34, 34, .4);
+            box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.4);
           }
 
           @media (any-hover: hover) {
@@ -68,7 +68,7 @@ export const StyledButton = styled.button`
           border: 2px solid #f4f4f4;
           background-color: #f4f4f4;
           color: #222;
-          transition: transform .2s, background-color .2s;
+          transition: transform 0.2s, background-color 0.2s;
 
           &:active {
             transform: translateY(2px);
@@ -76,7 +76,7 @@ export const StyledButton = styled.button`
 
           &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(34, 34, 34, .4);
+            box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.4);
           }
 
           @media (any-hover: hover) {
@@ -96,7 +96,7 @@ export const StyledButton = styled.button`
           border: 1px solid #fe5f1e;
           font-size: 14px;
           color: #fe5f1e;
-          transition: transform .2s, background-color .2s, color .2s;
+          transition: transform 0.2s, background-color 0.2s, color 0.2s;
 
           .plus-icon {
             display: block;
@@ -104,7 +104,7 @@ export const StyledButton = styled.button`
             height: 10px;
             fill: #fe5f1e;
             margin-right: 6px;
-            transition: fill .2s;
+            transition: fill 0.2s;
           }
 
           .counter {
@@ -118,7 +118,7 @@ export const StyledButton = styled.button`
             font-size: 12px;
             margin-left: 6px;
             border-radius: 50%;
-            transition: background-color .2s, color .2s;
+            transition: background-color 0.2s, color 0.2s;
           }
 
           &:active {
@@ -127,7 +127,7 @@ export const StyledButton = styled.button`
 
           &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(254, 95, 30, .4);
+            box-shadow: 0 0 0 3px rgba(254, 95, 30, 0.4);
           }
 
           @media (any-hover: hover) {
@@ -170,7 +170,7 @@ export const StyledLinkButton = styled(Link)`
           border: 2px solid #222;
           background-color: #222;
           color: #fff;
-          transition: transform .2s;
+          transition: transform 0.2s;
 
           &:active {
             transform: translateY(2px);
@@ -178,7 +178,7 @@ export const StyledLinkButton = styled(Link)`
 
           &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(34, 34, 34, .4);
+            box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.4);
           }
 
           @media (any-hover: hover) {
