@@ -1,6 +1,10 @@
 import {StyledTitle} from "./StyledTitle";
 
-export function Title(props) {
+type Props = {
+  children: JSX.Element | string,
+};
+
+export function Title(props: Props) {
   return (
     <StyledTitle {...props} />
   )
