@@ -1,7 +1,7 @@
 import {useCallback} from "react";
-import {useDispatch, useSelector} from "react-redux";
 
-import {changeCart, selectCart} from "../../redux/slices/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import {CartInterface, changeCart, selectCart} from "../../redux/slices/cartSlice";
 import {selectFilter} from "../../redux/slices/filterSlice";
 
 import {CartPizza} from "../../components/CartPizza/CartPizza";
@@ -18,16 +18,16 @@ import {
 } from "./StyledCart";
 
 export function Cart() {
-  const cart = useSelector(selectCart);
-  const filter = useSelector(selectFilter);
-  const dispatch = useDispatch();
+  const cart = useAppSelector(selectCart);
+  const filter = useAppSelector(selectFilter);
+  const dispatch = useAppDispatch();
 
   const handleOnClickClearCart = useCallback(() => {
     dispatch(changeCart({
       pizzas: [],
       totalPrice: 0,
       totalCount: 0
-    }))
+    } as CartInterface))
   }, [dispatch])
 
   return (
