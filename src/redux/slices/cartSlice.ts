@@ -12,7 +12,7 @@ interface PizzaInterface {
   count: number;
 }
 
-interface CartInterface {
+export type CartInterface = {
   pizzas: PizzaInterface[]
   totalCount: number
   totalPrice: number

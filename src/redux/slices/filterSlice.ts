@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {sorts} from "../../config";
 import {RootState} from "../store";
 
-interface FilterInterface {
+export type FilterInterface = {
   search: string
   sortType: string
   category: number

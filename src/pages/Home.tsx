@@ -5,8 +5,8 @@ import isequal from "lodash.isequal";
 
 import {useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 
-import {selectFilter, setFilters} from "../redux/slices/filterSlice";
-import {changeCart} from "../redux/slices/cartSlice";
+import {FilterInterface, selectFilter, setFilters} from "../redux/slices/filterSlice";
+import {CartInterface, changeCart} from "../redux/slices/cartSlice";
 import {fetchPizzas} from "../redux/slices/pizzasSlice";
 
 import {Filters} from "../components/Filters/Filters";
@@ -16,12 +16,13 @@ import {Pizzas} from "../components/Pizzas/Pizzas";
 export function Home() {
   const navigate = useNavigate();
   const isMounted = useRef(false);
-  const { state } = useLocation();
+  const location = useLocation();
+  const state = location.state as FilterInterface;
   const {category, search, sortType} = useAppSelector(selectFilter);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const pizzas = JSON.parse(localStorage.getItem('pizzas') as string);
+    const pizzas: CartInterface = JSON.parse(localStorage.getItem('pizzas') as string)
 
     if (pizzas) {
       dispatch(changeCart({
@@ -36,9 +37,9 @@ export function Home() {
         search,
         sortType,
         category
-      }, { addQueryPrefix: true });
+      } as FilterInterface, { addQueryPrefix: true });
 
-      const currentParams = {
+      const currentParams: FilterInterface = {
         search,
         sortType,
         category
@@ -56,7 +57,7 @@ export function Home() {
         search,
         sortType,
         category
-      }, { addQueryPrefix: true });
+      } as FilterInterface, { addQueryPrefix: true });
 
       navigate(`${queryString}`);
     }
@@ -68,12 +69,12 @@ export function Home() {
     const {search} = window.location;
 
     if (search) {
-      const params = qs.parse(search.replace('?', ''));
-      const currentParams = {
+      const params = (qs.parse(search.replace('?', '')) as unknown) as FilterInterface;
+      const currentParams: FilterInterface = {
         search,
         sortType,
-        category: `${category}`
-      }
+        category: category
+      };
 
       if (!isequal(params, currentParams)) {
 
@@ -83,9 +84,9 @@ export function Home() {
   }, [dispatch, category, search, sortType])
 
   useEffect(() => {
-      const categoryId: string = category === 0 ? '' : `&category=${category}`;
-      const searchValue: string = search ? `&search=${search}` : '';
-      const sort: string = `sortBy=${sortType}`;
+      const categoryId = category === 0 ? '' : `&category=${category}`;
+      const searchValue = search ? `&search=${search}` : '';
+      const sort = `sortBy=${sortType}`;
 
       dispatch(fetchPizzas({
         sort,
