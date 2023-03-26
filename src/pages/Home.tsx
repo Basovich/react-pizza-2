@@ -69,7 +69,7 @@ export function Home() {
     const {search} = window.location;
 
     if (search) {
-      const params = (qs.parse(search.replace('?', '')) as unknown) as FilterInterface;
+      const params = qs.parse(search.replace('?', '')) as unknown as FilterInterface;
       const currentParams: FilterInterface = {
         search,
         sortType,

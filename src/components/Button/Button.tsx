@@ -2,15 +2,16 @@ import { FilterInterface } from "../../redux/slices/filterSlice";
 import {StyledButton, StyledLinkButton} from "./StyledButton";
 
 type ButtonProps = {
-  $btnType: string,
-  type: string,
-  children: React.ReactNode;
+  $btnType: string
+  type: string
+  children: React.ReactNode
+  onClick?: () => void
 }
 
 type LinkButtonProps = {
-  $btnLinkType: string,
-  to: string,
-  state: FilterInterface;
+  $btnLinkType: string
+  to: string
+  state: FilterInterface
   children: React.ReactNode
 }
 
