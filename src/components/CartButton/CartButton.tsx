@@ -1,9 +1,10 @@
-import {StyledCartButton} from "./StyledCartButton";
-import {useSelector} from "react-redux";
 import {selectCart} from "../../redux/slices/cartSlice";
+import { useAppSelector } from "../../hooks/redux-hooks";
+
+import {StyledCartButton} from "./StyledCartButton";
 
 export function CartButton() {
-  const {totalCount, totalPrice} = useSelector(selectCart);
+  const {totalCount, totalPrice} = useAppSelector(selectCart);
 
   return (
     <StyledCartButton to="/cart">
