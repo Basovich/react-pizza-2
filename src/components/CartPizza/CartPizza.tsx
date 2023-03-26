@@ -1,5 +1,4 @@
 import {useCallback} from "react";
-import {useDispatch, useSelector} from "react-redux";
 import {
   StyledCartPizza,
   StyledCartPizzaControls,
@@ -11,13 +10,25 @@ import {
 import {sizes} from "../../config";
 import {changeCart, selectCart} from "../../redux/slices/cartSlice";
 import clonedeep from "lodash.clonedeep";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 
-export function CartPizza({id, name, about, imageUrl, typePizza, sizePizza, pricePizza, count}) {
-  const cart = useSelector(selectCart);
-  const dispatch = useDispatch();
+type PizzaInterface = {
+  id: number;
+  name: string;
+  about: string;
+  imageUrl: string;
+  typePizza: string;
+  sizePizza: number;
+  pricePizza: number;
+  count: number;
+}
 
-  const getPizzaIndex = useCallback((pizzas) => {
-    let index = false;
+export function CartPizza({id, name, about, imageUrl, typePizza, sizePizza, pricePizza, count}: PizzaInterface) {
+  const cart = useAppSelector(selectCart);
+  const dispatch = useAppDispatch();
+
+  const getPizzaIndex = useCallback((pizzas: PizzaInterface[]) => {
+    let index: number = -1;
 
     pizzas?.forEach((pizza, i) => {
       if ( pizza.id === id
@@ -33,6 +44,8 @@ export function CartPizza({id, name, about, imageUrl, typePizza, sizePizza, pric
   const handleOnClickRemoveOne = useCallback(() => {
     let pizzas = clonedeep(cart.pizzas);
     const index = getPizzaIndex(pizzas);
+
+    if (index === -1) return;
 
     if (pizzas[index].count === 1) {
       pizzas.splice(index, 1);
