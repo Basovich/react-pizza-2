@@ -1,7 +1,7 @@
 import {StyledTitle} from "./StyledTitle";
 
 type Props = {
-  children: JSX.Element | string,
+  children: React.ReactNode;
 };
 
 export function Title(props: Props) {
