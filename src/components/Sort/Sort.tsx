@@ -1,8 +1,8 @@
 import {useCallback, useEffect, useRef, useState} from "react";
-import { useSelector, useDispatch } from 'react-redux';
 import {StyledSort} from "./StyledSort";
 import {sorts} from "../../config";
 import {changeSort, selectSortType} from "../../redux/slices/filterSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 
 type DocumentClickType = MouseEvent & {
   path: Node[];
@@ -11,8 +11,8 @@ type DocumentClickType = MouseEvent & {
 export function Sort() {
   const refSort = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const sortType = useSelector(selectSortType);
-  const dispatch = useDispatch();
+  const sortType = useAppSelector(selectSortType);
+  const dispatch = useAppDispatch();
 
   const handlerOutsideClick = useCallback( (event: MouseEvent) => {
     const _event = event as DocumentClickType;

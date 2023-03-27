@@ -1,19 +1,19 @@
 import {useCallback, useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
 import clonedeep from "lodash.clonedeep";
 
 import {StyledPizza} from "./StyledPizza";
 import {CartPizzaInterface, changeCart, selectCart} from "../../redux/slices/cartSlice";
 import {Button} from "../Button/Button";
 import { PizzaInterface } from "../../redux/slices/pizzasSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 
 export function Pizza({id, imageUrl, name, about, types, sizes, prices}: PizzaInterface) {
   const [typePizza, setTypePizza] = useState(types[0]);
   const [sizePizza, setSizePizza] = useState(0);
   const [addedPizza, setAddedPizza] = useState(0);
   const [pricePizza, setPricePizza] = useState(prices[typePizza][0]);
-  const cart = useSelector(selectCart);
-  const dispatch = useDispatch();
+  const cart = useAppSelector(selectCart);
+  const dispatch = useAppDispatch();
 
   const getIndex = useCallback((pizzas: CartPizzaInterface[]) => {
     let index = -1;

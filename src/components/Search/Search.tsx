@@ -1,15 +1,15 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {useDispatch, useSelector} from 'react-redux';
 import debounce from "lodash.debounce";
 
 import {StyledSearch} from "./StyledSearch";
 import {changeSearch, selectSearch} from "../../redux/slices/filterSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 
 
 export function Search() {
-  const search = useSelector(selectSearch);
+  const search = useAppSelector(selectSearch);
   const [value, setValue] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const refSearch = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
