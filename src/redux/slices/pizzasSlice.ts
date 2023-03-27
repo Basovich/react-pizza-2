@@ -3,7 +3,7 @@ import axios from "axios";
 import {baseUrl} from "../../config";
 import {RootState} from "../store";
 
-interface PizzaInterface {
+export interface PizzaInterface {
   id: number;
   name: string;
   about: string;

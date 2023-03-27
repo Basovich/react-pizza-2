@@ -1,5 +1,4 @@
-import {useSelector} from "react-redux";
-
+import { useAppSelector } from "../../hooks/redux-hooks";
 import {selectPizzas} from "../../redux/slices/pizzasSlice";
 
 import {StyledPizzas} from "./StyledPizzas";
@@ -9,7 +8,7 @@ import {NotFoundPizzas} from "./NotFoundPizzas";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
-  const {pizzas, status} = useSelector(selectPizzas);
+  const {pizzas, status} = useAppSelector(selectPizzas);
 
   return (
     <>
