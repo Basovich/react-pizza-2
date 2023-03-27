@@ -1,8 +1,7 @@
-import React from "react"
 import ContentLoader from "react-content-loader"
 import {StyledSkeletonPizza} from "./StyledSkeletonPizza";
 
-export const SkeletonPizza = (props) => (
+export const SkeletonPizza = () => (
   <StyledSkeletonPizza>
     <ContentLoader
       speed={2}
@@ -11,7 +10,6 @@ export const SkeletonPizza = (props) => (
       viewBox="0 0 275 450"
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
-      {...props}
     >
       <circle cx="135" cy="98" r="91" />
       <rect x="0" y="410" rx="4" ry="4" width="71" height="32" />
