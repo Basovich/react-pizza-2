@@ -4,23 +4,28 @@ import {StyledSort} from "./StyledSort";
 import {sorts} from "../../config";
 import {changeSort, selectSortType} from "../../redux/slices/filterSlice";
 
+type DocumentClickType = MouseEvent & {
+  path: Node[];
+}
+
 export function Sort() {
-  const refSort = useRef();
+  const refSort = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const sortType = useSelector(selectSortType);
   const dispatch = useDispatch();
 
-  const handlerOutsideClick = useCallback( event => {
+  const handlerOutsideClick = useCallback( (event: MouseEvent) => {
+    const _event = event as DocumentClickType;
     // e.path none in Safari
-    const path = event.path || (event.composedPath && event.composedPath());
+    const path = _event.path || (_event.composedPath && _event.composedPath());
 
-    if (!path.includes(refSort.current)) {
+    if (refSort.current && !path.includes(refSort.current)) {
       setIsOpen(false);
     }
   }, []);
 
   useEffect(() => {
-    const handleEsc = (event) => {
+    const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsOpen(false);
       }
@@ -35,7 +40,7 @@ export function Sort() {
     };
   }, [handlerOutsideClick]);
 
-  const handleOnClickSort = (name) => {
+  const handleOnClickSort = (name:string) => {
     dispatch(changeSort(name));
     setIsOpen(false);
   }
