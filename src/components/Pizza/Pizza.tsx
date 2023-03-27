@@ -3,10 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import clonedeep from "lodash.clonedeep";
 
 import {StyledPizza} from "./StyledPizza";
-import {changeCart, selectCart} from "../../redux/slices/cartSlice";
+import {CartPizzaInterface, changeCart, selectCart} from "../../redux/slices/cartSlice";
 import {Button} from "../Button/Button";
+import { PizzaInterface } from "../../redux/slices/pizzasSlice";
 
-export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
+export function Pizza({id, imageUrl, name, about, types, sizes, prices}: PizzaInterface) {
   const [typePizza, setTypePizza] = useState(types[0]);
   const [sizePizza, setSizePizza] = useState(0);
   const [addedPizza, setAddedPizza] = useState(0);
@@ -14,8 +15,8 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
   const cart = useSelector(selectCart);
   const dispatch = useDispatch();
 
-  const getIndex = useCallback((pizzas) => {
-    let index = false;
+  const getIndex = useCallback((pizzas: CartPizzaInterface[]) => {
+    let index = -1;
 
     pizzas.forEach((pizza, i) => {
       if ( pizza.id === id
@@ -28,18 +29,18 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
     return index;
   }, [id, sizePizza, typePizza]);
 
-  const handleOnClickTypePizza = useCallback((type) => {
+  const handleOnClickTypePizza = useCallback((type: string) => {
     setTypePizza(type);
     setPricePizza(prices[type][sizePizza]);
   }, [prices, sizePizza])
 
-  const handleOnClickSizePizza = useCallback((size) => {
+  const handleOnClickSizePizza = useCallback((size: number) => {
     setSizePizza(size);
     setPricePizza(prices[typePizza][size]);
   }, [typePizza, prices])
 
   const handleOnAddPizza = useCallback(() => {
-    let pizzas = clonedeep(cart.pizzas);
+    let pizzas: CartPizzaInterface[] | [] = clonedeep(cart.pizzas);
     const newPizza = {
       id,
       name,
@@ -54,7 +55,7 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}) {
     if (pizzas.length) {
       const index = getIndex(pizzas);
 
-      if (index !== false) {
+      if (index !== -1) {
         pizzas[index].count = pizzas[index].count + 1;
       } else {
         pizzas.push(newPizza)

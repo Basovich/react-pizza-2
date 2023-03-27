@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from "../store";
 
-interface PizzaInterface {
+export interface CartPizzaInterface {
   id: number;
   name: string;
   about: string;
@@ -10,10 +10,11 @@ interface PizzaInterface {
   sizePizza: number;
   pricePizza: number;
   count: number;
+  index?: number;
 }
 
 export type CartInterface = {
-  pizzas: PizzaInterface[]
+  pizzas: CartPizzaInterface[]
   totalCount: number
   totalPrice: number
 }
