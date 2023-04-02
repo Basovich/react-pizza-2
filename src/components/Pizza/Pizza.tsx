@@ -82,7 +82,7 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}: PizzaIn
       }, 0);
 
     setAddedPizza(count);
-  }, [cart, id])
+  }, [cart.pizzas, id])
 
   return (
     <StyledPizza>

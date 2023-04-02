@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {sorts} from "../../config";
+import {sorts} from "../../utils/staticData";
 import {RootState} from "../store";
 
 export type FilterInterface = {

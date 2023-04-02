@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 import {StyledSort} from "./StyledSort";
-import {sorts} from "../../config";
+import {sorts} from "../../utils/staticData";
 import {changeSort, selectSortType} from "../../redux/slices/filterSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 

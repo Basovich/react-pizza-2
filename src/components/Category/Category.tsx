@@ -1,4 +1,4 @@
-import {categories} from "../../config";
+import {categories} from "../../utils/staticData";
 import {changeCategoryId, selectCategory} from "../../redux/slices/filterSlice";
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 

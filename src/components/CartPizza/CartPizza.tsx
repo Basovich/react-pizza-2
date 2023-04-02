@@ -7,7 +7,7 @@ import {
   StyledCartPizzaImg,
   StyledCartPizzaRemove
 } from "./StyledCartPizza";
-import {sizes} from "../../config";
+import {sizes} from "../../utils/staticData";
 import {changeCart, selectCart} from "../../redux/slices/cartSlice";
 import clonedeep from "lodash.clonedeep";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";

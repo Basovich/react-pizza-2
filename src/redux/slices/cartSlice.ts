@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { getCartFromLS } from '../../utils/getCartFromLS';
 import {RootState} from "../store";
 
 export interface CartPizzaInterface {
@@ -19,11 +20,7 @@ export type CartInterface = {
   totalPrice: number
 }
 
-const initialState: CartInterface = {
-  pizzas: [],
-  totalCount: 0,
-  totalPrice: 0,
-};
+const initialState: CartInterface = getCartFromLS();
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -33,12 +30,6 @@ export const cartSlice = createSlice({
       state.pizzas = action.payload.pizzas;
       state.totalCount = action.payload.totalCount;
       state.totalPrice = action.payload.totalPrice;
-
-      localStorage.setItem('pizzas', JSON.stringify({
-        pizzas: state.pizzas,
-        totalCount: state.totalCount,
-        totalPrice: state.totalPrice,
-      }));
     }
   },
 });

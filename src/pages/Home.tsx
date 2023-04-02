@@ -6,7 +6,6 @@ import isequal from "lodash.isequal";
 import {useAppDispatch, useAppSelector} from "../hooks/redux-hooks";
 
 import {FilterInterface, selectFilter, setFilters} from "../redux/slices/filterSlice";
-import {CartInterface, changeCart} from "../redux/slices/cartSlice";
 import {fetchPizzas} from "../redux/slices/pizzasSlice";
 
 import {Filters} from "../components/Filters/Filters";
@@ -20,16 +19,6 @@ export function Home() {
   const state = location.state as FilterInterface;
   const {category, search, sortType} = useAppSelector(selectFilter);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const pizzas: CartInterface = JSON.parse(localStorage.getItem('pizzas') as string)
-
-    if (pizzas) {
-      dispatch(changeCart({
-        ...pizzas
-      }))
-    }
-  }, [dispatch])
 
   useEffect(() => {
     if (state) {

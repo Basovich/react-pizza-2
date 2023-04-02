@@ -2,9 +2,18 @@ import {selectCart} from "../../redux/slices/cartSlice";
 import { useAppSelector } from "../../hooks/redux-hooks";
 
 import {StyledCartButton} from "./StyledCartButton";
+import { useEffect } from 'react';
 
 export function CartButton() {
-  const {totalCount, totalPrice} = useAppSelector(selectCart);
+  const {pizzas, totalCount, totalPrice} = useAppSelector(selectCart);
+
+  useEffect(() => {
+    localStorage.setItem('pizzas', JSON.stringify({
+      pizzas,
+      totalCount,
+      totalPrice,
+    }));
+  }, [pizzas, totalCount, totalPrice])
 
   return (
     <StyledCartButton to="/cart">
