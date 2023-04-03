@@ -1,12 +1,10 @@
 import {useCallback, useEffect, useState} from "react";
 import clonedeep from "lodash.clonedeep";
-
-import { selectCart } from "../../redux/slices/cart/selectors";
-import { changeCart } from "../../redux/slices/cart/slice";
+import { selectCart } from "../../redux/cart/selectors";
+import { changeCart } from "../../redux/cart/slice";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { PizzaInterface } from "../../redux/slices/pizzas/types";
-import { CartPizzaInterface } from "../../redux/slices/cart/types";
-
+import { PizzaInterface } from "../../redux/pizzas/types";
+import { CartPizzaInterface } from "../../redux/cart/types";
 import {StyledPizza} from "./StyledPizza";
 import {Button} from "../Button/Button";
 

@@ -1,4 +1,4 @@
-import { FilterInterface } from "../../redux/slices/filter/types";
+import { FilterInterface } from "../../redux/filter/types";
 import {StyledButton, StyledLinkButton} from "./StyledButton";
 
 type ButtonProps = {

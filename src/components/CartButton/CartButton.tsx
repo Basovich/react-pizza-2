@@ -1,6 +1,6 @@
 import { useAppSelector } from "../../hooks/redux-hooks";
 import { useEffect } from 'react';
-import { selectCart } from "../../redux/slices/cart/selectors";
+import { selectCart } from "../../redux/cart/selectors";
 
 import {StyledCartButton} from "./StyledCartButton";
 

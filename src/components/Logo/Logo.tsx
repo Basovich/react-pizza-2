@@ -2,7 +2,7 @@ import Logotype from '../../assets/images/logotype.svg';
 import {StyledLogoLink, StyledLogoDiv} from "./StyledLogo";
 import {useLocation} from "react-router";
 import { useAppSelector } from '../../hooks/redux-hooks';
-import { selectFilter } from '../../redux/slices/filter/selectors';
+import { selectFilter } from '../../redux/filter/selectors';
 
 export function Logo() {
   const location = useLocation();

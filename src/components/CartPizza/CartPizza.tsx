@@ -10,8 +10,8 @@ import {
 import {sizes} from "../../utils/staticData";
 import clonedeep from "lodash.clonedeep";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { selectCart } from "../../redux/slices/cart/selectors";
-import { changeCart } from "../../redux/slices/cart/slice";
+import { selectCart } from "../../redux/cart/selectors";
+import { changeCart } from "../../redux/cart/slice";
 
 type PizzaInterface = {
   id: number;

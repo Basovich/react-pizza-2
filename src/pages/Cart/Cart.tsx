@@ -1,9 +1,9 @@
 import {useCallback} from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { selectCart } from "../../redux/slices/cart/selectors";
-import { changeCart } from "../../redux/slices/cart/slice";
-import { CartInterface } from "../../redux/slices/cart/types";
-import { selectFilter } from "../../redux/slices/filter/selectors";
+import { selectCart } from "../../redux/cart/selectors";
+import { changeCart } from "../../redux/cart/slice";
+import { CartInterface } from "../../redux/cart/types";
+import { selectFilter } from "../../redux/filter/selectors";
 import {CartPizza} from "../../components/CartPizza/CartPizza";
 import {Button, LinkButton} from "../../components/Button/Button";
 import {EmptyCart} from "./EmptyCart";

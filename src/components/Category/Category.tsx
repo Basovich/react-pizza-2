@@ -2,8 +2,8 @@ import {categories} from "../../utils/staticData";
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import {Button} from "../Button/Button";
 import {StyledCategory} from "./StyledCategory";
-import { selectCategory } from "../../redux/slices/filter/selectors";
-import { changeCategoryId } from "../../redux/slices/filter/slice";
+import { selectCategory } from "../../redux/filter/selectors";
+import { changeCategoryId } from "../../redux/filter/slice";
 
 export function Category() {
   const categoryId = useAppSelector(selectCategory);

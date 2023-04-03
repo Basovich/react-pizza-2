@@ -1,10 +1,8 @@
-
 import { useAppSelector } from "../../hooks/redux-hooks";
-
 import {Title} from "../../components/Title/Title";
 import {LinkButton} from "../../components/Button/Button";
 import {StyleEmptyCart} from "./StyledCart";
-import { selectFilter } from "../../redux/slices/filter/selectors";
+import { selectFilter } from "../../redux/filter/selectors";
 
 export function EmptyCart() {
   const filter = useAppSelector(selectFilter);
