@@ -1,4 +1,4 @@
-import { CartInterface, CartPizzaInterface } from "../redux/slices/cartSlice";
+import { CartInterface, CartPizzaInterface } from "../redux/slices/cart/types";
 
 export const getCartFromLS = (): CartInterface => {
     const data = localStorage.getItem('pizzas');

@@ -1,9 +1,9 @@
 import {useCallback} from "react";
-
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import {CartInterface, changeCart, selectCart} from "../../redux/slices/cartSlice";
-import {selectFilter} from "../../redux/slices/filterSlice";
-
+import { selectCart } from "../../redux/slices/cart/selectors";
+import { changeCart } from "../../redux/slices/cart/slice";
+import { CartInterface } from "../../redux/slices/cart/types";
+import { selectFilter } from "../../redux/slices/filter/selectors";
 import {CartPizza} from "../../components/CartPizza/CartPizza";
 import {Button, LinkButton} from "../../components/Button/Button";
 import {EmptyCart} from "./EmptyCart";
@@ -16,6 +16,7 @@ import {
   StyledCartTotal,
   StyledCartBottom
 } from "./StyledCart";
+
 
 export function Cart() {
   const cart = useAppSelector(selectCart);

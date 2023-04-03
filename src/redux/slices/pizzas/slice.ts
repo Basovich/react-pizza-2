@@ -1,31 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import axios from "axios";
-import {baseUrl} from "../../utils/staticData";
-import {RootState} from "../store";
-
-export interface PizzaInterface {
-  id: number;
-  name: string;
-  about: string;
-  imageUrl: string;
-  types: string[];
-  sizes: number[];
-  category: number;
-  popular: number;
-  price: number;
-  prices: Record<string, number[]>;
-}
-
-enum Status {
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
-}
-
-interface PizzasInterface {
-  pizzas: PizzaInterface[];
-  status: Status;
-}
+import {baseUrl} from "../../../utils/staticData";
+import { PizzaInterface, PizzasInterface, Status } from './types';
 
 const initialState: PizzasInterface = {
   pizzas: [],
@@ -63,7 +39,5 @@ export const pizzasSlice = createSlice({
     })
   },
 });
-
-export const selectPizzas = (state: RootState) => state.pizzas;
 
 export default pizzasSlice.reducer;

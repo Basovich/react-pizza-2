@@ -1,10 +1,9 @@
 import { useAppSelector } from "../../hooks/redux-hooks";
-import {selectPizzas} from "../../redux/slices/pizzasSlice";
-
 import {StyledPizzas} from "./StyledPizzas";
 import {Pizza} from "../Pizza/Pizza";
 import {SkeletonPizza} from "../Pizza/SkeletonPizza";
 import {NotFoundPizzas} from "./NotFoundPizzas";
+import { selectPizzas } from "../../redux/slices/pizzas/selectors";
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));

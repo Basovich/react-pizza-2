@@ -1,8 +1,8 @@
-import {selectCart} from "../../redux/slices/cartSlice";
 import { useAppSelector } from "../../hooks/redux-hooks";
+import { useEffect } from 'react';
+import { selectCart } from "../../redux/slices/cart/selectors";
 
 import {StyledCartButton} from "./StyledCartButton";
-import { useEffect } from 'react';
 
 export function CartButton() {
   const {pizzas, totalCount, totalPrice} = useAppSelector(selectCart);
