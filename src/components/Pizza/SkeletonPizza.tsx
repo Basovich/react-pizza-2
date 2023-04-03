@@ -1,5 +1,5 @@
 import ContentLoader from "react-content-loader"
-import {StyledSkeletonPizza} from "./StyledSkeletonPizza";
+import { StyledSkeletonPizza } from "./StyledSkeletonPizza";
 
 export const SkeletonPizza = () => (
   <StyledSkeletonPizza>

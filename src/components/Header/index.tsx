@@ -1,9 +1,6 @@
 import { useLocation } from 'react-router-dom';
-
-import {StyledHeader} from "./StyledHeader";
-import {Logo} from "../Logo/Logo";
-import {CartButton} from "../CartButton/CartButton";
-import {Search} from "../Search/Search";
+import { Logo, CartButton, Search } from "..";
+import { StyledHeader } from "./StyledHeader";
 
 export function Header() {
   const location = useLocation();

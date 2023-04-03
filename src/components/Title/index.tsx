@@ -1,4 +1,4 @@
-import {StyledTitle} from "./StyledTitle";
+import { StyledTitle } from "./StyledTitle";
 
 type Props = {
   children: React.ReactNode;

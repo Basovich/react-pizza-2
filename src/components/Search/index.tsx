@@ -1,9 +1,9 @@
-import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import debounce from "lodash.debounce";
-import {StyledSearch} from "./StyledSearch";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { selectSearch } from "../../redux/filter/selectors";
 import { changeSearch } from "../../redux/filter/slice";
+import { StyledSearch } from "./StyledSearch";
 
 
 export function Search() {

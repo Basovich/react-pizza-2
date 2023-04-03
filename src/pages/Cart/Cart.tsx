@@ -1,13 +1,11 @@
-import {useCallback} from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { useCallback } from "react";
 import { selectCart } from "../../redux/cart/selectors";
 import { changeCart } from "../../redux/cart/slice";
 import { CartInterface } from "../../redux/cart/types";
 import { selectFilter } from "../../redux/filter/selectors";
-import {CartPizza} from "../../components/CartPizza/CartPizza";
-import {Button, LinkButton} from "../../components/Button/Button";
-import {EmptyCart} from "./EmptyCart";
-import {Title} from "../../components/Title/Title";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { EmptyCart} from "./EmptyCart";
+import { Title, Button, LinkButton, CartPizza } from "../../components/";
 import {
   StyledClearCartButton,
   StyledCartHead,

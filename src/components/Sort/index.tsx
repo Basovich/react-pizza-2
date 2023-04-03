@@ -1,9 +1,9 @@
-import {useCallback, useEffect, useRef, useState} from "react";
-import {StyledSort} from "./StyledSort";
-import {sorts} from "../../utils/staticData";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { sorts } from "../../utils/staticData";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { selectSortType } from "../../redux/filter/selectors";
 import { changeSort } from "../../redux/filter/slice";
+import { StyledSort } from "./StyledSort";
 
 type DocumentClickType = MouseEvent & {
   path: Node[];
