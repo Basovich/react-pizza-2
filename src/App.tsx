@@ -5,10 +5,10 @@ import {
 import { Suspense, lazy } from "react";
 import {DefaultLayout} from "./layouts/DefaultLayout";
 
-const Home = lazy(() => import('./pages/Home'));
-const Cart = lazy(() => import('./pages/Cart/Cart'));
-const Thanks = lazy(() => import('./pages/Thanks'));
-const Error = lazy(() => import('./pages/Error/Error'));
+const Home = lazy(() => import( /* webpackChunkName: "Home" */'./pages/Home'));
+const Cart = lazy(() => import(/* webpackChunkName: "Cart" */'./pages/Cart/Cart'));
+const Thanks = lazy(() => import(/* webpackChunkName: "Thanks" */'./pages/Thanks'));
+const Error = lazy(() => import(/* webpackChunkName: "Error" */'./pages/Error/Error'));
 
 export function App() {
   return (
