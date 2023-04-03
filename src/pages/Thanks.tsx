@@ -1,4 +1,4 @@
-export function Thanks() {
+export default function Thanks() {
   return (
     <>
       Thank you!

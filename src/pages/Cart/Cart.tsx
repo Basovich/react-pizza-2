@@ -18,7 +18,7 @@ import {
 } from "./StyledCart";
 
 
-export function Cart() {
+export default function Cart() {
   const cart = useAppSelector(selectCart);
   const filter = useAppSelector(selectFilter);
   const dispatch = useAppDispatch();

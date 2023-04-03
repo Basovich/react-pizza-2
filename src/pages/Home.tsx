@@ -11,7 +11,7 @@ import {Pizzas} from "../components/Pizzas/Pizzas";
 import { FilterInterface } from "../redux/filter/types";
 import { fetchPizzas } from "../redux/pizzas/slice";
 
-export function Home() {
+export default function Home() {
   const navigate = useNavigate();
   const isMounted = useRef(false);
   const location = useLocation();

@@ -2,23 +2,40 @@ import {
   Routes,
   Route,
 } from "react-router";
-
-import {Home} from "./pages/Home";
-import {Cart} from "./pages/Cart/Cart";
-import {Thanks} from "./pages/Thanks";
-import {Error} from "./pages/Error/Error";
+import { Suspense, lazy } from "react";
 import {DefaultLayout} from "./layouts/DefaultLayout";
+
+const Home = lazy(() => import('./pages/Home'));
+const Cart = lazy(() => import('./pages/Cart/Cart'));
+const Thanks = lazy(() => import('./pages/Thanks'));
+const Error = lazy(() => import('./pages/Error/Error'));
 
 export function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route path="" element={<Home />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="thanks" element={<Thanks />} />
-          <Route path="*" element={<Error />} />
-        </Route>
+            <Route path="" element={
+              <Suspense fallback={<div>Завантаження...</div>}>
+                <Home />
+              </Suspense>                     
+            } />
+            <Route path="cart" element={
+              <Suspense fallback={<div>Завантаження...</div>}>
+                <Cart />
+              </Suspense>
+            } />
+            <Route path="thanks" element={
+              <Suspense fallback={<div>Завантаження...</div>}>
+                <Thanks />
+              </Suspense>
+            } />
+            <Route path="*" element={
+              <Suspense fallback={<div>Завантаження...</div>}>
+                <Error />
+              </Suspense>
+            } />
+          </Route>
       </Routes>
     </>
   )
