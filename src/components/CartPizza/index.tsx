@@ -1,9 +1,9 @@
-import { useCallback } from "react";
-import clonedeep from "lodash.clonedeep";
-import { sizes } from "../../utils/staticData";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { selectCart } from "../../redux/cart/selectors";
-import { changeCart } from "../../redux/cart/slice";
+import { useCallback } from 'react';
+import clonedeep from 'lodash.clonedeep';
+import { sizes } from '../../utils/staticData';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
+import { selectCart } from '../../redux/cart/selectors';
+import { changeCart } from '../../redux/cart/slice';
 import {
   StyledCartPizza,
   StyledCartPizzaControls,
@@ -11,7 +11,7 @@ import {
   StyledCartPizzaHead,
   StyledCartPizzaImg,
   StyledCartPizzaRemove
-} from "./StyledCartPizza";
+} from './StyledCartPizza';
 
 type PizzaInterface = {
   id: number;

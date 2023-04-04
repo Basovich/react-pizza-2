@@ -1,9 +1,10 @@
 import {
   Routes,
   Route,
-} from "react-router";
-import { Suspense, lazy } from "react";
-import {DefaultLayout} from "./layouts/DefaultLayout";
+} from 'react-router';
+import { Suspense, lazy } from 'react';
+import {DefaultLayout} from './layouts/DefaultLayout';
+import { PageLoader } from './components';
 
 const Home = lazy(() => import( /* webpackChunkName: "Home" */'./pages/Home'));
 const Cart = lazy(() => import(/* webpackChunkName: "Cart" */'./pages/Cart/Cart'));
@@ -16,22 +17,22 @@ export function App() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
             <Route path="" element={
-              <Suspense fallback={<div>Завантаження...</div>}>
+              <Suspense fallback={PageLoader()}>
                 <Home />
               </Suspense>                     
             } />
             <Route path="cart" element={
-              <Suspense fallback={<div>Завантаження...</div>}>
+              <Suspense fallback={PageLoader()}>
                 <Cart />
               </Suspense>
             } />
             <Route path="thanks" element={
-              <Suspense fallback={<div>Завантаження...</div>}>
+              <Suspense fallback={PageLoader()}>
                 <Thanks />
               </Suspense>
             } />
             <Route path="*" element={
-              <Suspense fallback={<div>Завантаження...</div>}>
+              <Suspense fallback={PageLoader()}>
                 <Error />
               </Suspense>
             } />

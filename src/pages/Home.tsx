@@ -1,13 +1,13 @@
-import { useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router";
-import qs from "qs";
-import isequal from "lodash.isequal";
-import { selectFilter } from "../redux/filter/selectors";
-import { setFilters } from "../redux/filter/slice";
-import { FilterInterface } from "../redux/filter/types";
-import { fetchPizzas } from "../redux/pizzas/slice";
-import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { Filters, Title, Pizzas } from "../components/";
+import { useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router';
+import qs from 'qs';
+import isequal from 'lodash.isequal';
+import { selectFilter } from '../redux/filter/selectors';
+import { setFilters } from '../redux/filter/slice';
+import { FilterInterface } from '../redux/filter/types';
+import { fetchPizzas } from '../redux/pizzas/slice';
+import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks';
+import { Filters, Title, Pizzas } from '../components/';
 
 export default function Home() {
   const navigate = useNavigate();

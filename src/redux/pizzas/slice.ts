@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import axios from "axios";
-import {baseUrl} from "../../utils/staticData";
+import axios from 'axios';
+import {baseUrl} from '../../utils/staticData';
 import { PizzaInterface, PizzasInterface, Status } from './types';
 
 const initialState: PizzasInterface = {

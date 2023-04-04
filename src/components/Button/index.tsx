@@ -1,5 +1,5 @@
-import { ButtonProps, LinkButtonProps } from "./types";
-import { StyledButton, StyledLinkButton } from "./StyledButton";
+import { ButtonProps, LinkButtonProps } from './types';
+import { StyledButton, StyledLinkButton } from './StyledButton';
 
 export function Button(props: ButtonProps) {
   return (

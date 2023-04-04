@@ -1,4 +1,4 @@
-import { StyledErrorContent } from "./StyledError";
+import { StyledErrorContent } from './StyledError';
 
 export default function Error() {
   return (

@@ -1,4 +1,4 @@
-import { StyledNotFound } from "./StyledPizzas";
+import { StyledNotFound } from './StyledPizzas';
 
 type NotFoundPizzasType = {
   children: React.ReactNode;

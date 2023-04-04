@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import {StyledSort} from "../Sort/StyledSort";
+import styled from 'styled-components';
+import {StyledSort} from '../Sort/StyledSort';
 
 export const StyledFilters = styled.div`
   margin-top: 14px;

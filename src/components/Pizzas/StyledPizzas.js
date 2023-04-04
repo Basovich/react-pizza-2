@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import {StyledPizza} from "../Pizza/StyledPizza";
-import {StyledSkeletonPizza} from "../Pizza/StyledSkeletonPizza";
+import styled from 'styled-components';
+import {StyledPizza} from '../Pizza/StyledPizza';
+import {StyledSkeletonPizza} from '../Pizza/StyledSkeletonPizza';
 
 export const StyledPizzas = styled.div`
   display: grid;

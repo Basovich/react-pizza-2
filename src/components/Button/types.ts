@@ -1,4 +1,4 @@
-import { FilterInterface } from "../../redux/filter/types"
+import { FilterInterface } from '../../redux/filter/types';
 
 export type ButtonProps = {
     $btnType: string

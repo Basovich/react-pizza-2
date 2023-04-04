@@ -1,8 +1,8 @@
-import { useAppSelector } from "../../hooks/redux-hooks";
-import { Pizza, SkeletonPizza } from "..";
-import { NotFoundPizzas } from "./NotFoundPizzas";
-import { selectPizzas } from "../../redux/pizzas/selectors";
-import { StyledPizzas } from "./StyledPizzas";
+import { useAppSelector } from '../../hooks/redux-hooks';
+import { Pizza, SkeletonPizza } from '..';
+import { NotFoundPizzas } from './NotFoundPizzas';
+import { selectPizzas } from '../../redux/pizzas/selectors';
+import { StyledPizzas } from './StyledPizzas';
 
 export function Pizzas() {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));

@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import {StyledLogoDiv} from "../Logo/StyledLogo";
-import {StyledSearch} from "../Search/StyledSearch";
-import {StyledCartButton} from "../CartButton/StyledCartButton";
+import styled from 'styled-components';
+import {StyledLogoDiv} from '../Logo/StyledLogo';
+import {StyledSearch} from '../Search/StyledSearch';
+import {StyledCartButton} from '../CartButton/StyledCartButton';
 
 export const StyledHeader = styled.header`
   display: flex;
