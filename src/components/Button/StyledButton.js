@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const StyledButton = styled.button`
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   padding: 8px 24px;
   border-radius: 30px;
@@ -146,6 +146,111 @@ export const StyledButton = styled.button`
             }
           }
         `;
+      case "circleOrange":
+        return css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: transparent;
+          border-radius: 50%;
+          border: 2px solid #fe5f1e;
+          width: 26px;
+          height: 26px;
+          padding: 0;
+          transition: background-color 0.15s, transform 0.15s;
+
+          @media (any-hover: hover) {
+            &:hover {
+              background-color: #fe5f1e;
+
+              .icon {
+                fill: #fff;
+              }
+            }
+          }
+
+          &:active {
+            transform: translateY(2px);
+          }
+
+          &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(254, 95, 30, 0.4);
+          }
+
+          .icon {
+            fill: #fe5f1e;
+            transition: fill 0.15s;
+          }
+        `;
+      case "circleBlack":
+        return css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: transparent;
+          border: 2px solid #d0d0d0;
+          border-radius: 50%;
+          width: 26px;
+          height: 26px;
+          padding: 0;
+          transition: background-color 0.15s, border-color 0.15s,
+            transform 0.15s;
+
+          @media (any-hover: hover) {
+            &:hover {
+              background-color: #222;
+              border-color: #222;
+
+              .icon {
+                fill: #fff;
+              }
+            }
+          }
+
+          &:active {
+            transform: translateY(2px);
+          }
+
+          &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.4);
+          }
+
+          .icon {
+            fill: #d0d0d0;
+            transition: fill 0.15s;
+          }
+        `;
+      case "cross":
+        return css`
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 18px;
+          height: 18px;
+          position: absolute;
+          right: 14px;
+          z-index: 1;
+          padding: 4px;
+          margin: 0;
+          background-color: transparent;
+          border: 0;
+          border-radius: 2px;
+          opacity: 0.6;
+          transition: opacity 0.15s;
+
+          @media (any-hover: hover) {
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          &:focus-visible {
+            outline: 0;
+            box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.4);
+          }
+        `;
       default:
         return css``;
     }
@@ -192,6 +297,54 @@ export const StyledLinkButton = styled(Link)`
             width: 10px;
             height: 10px;
             margin-right: 10px;
+          }
+        `;
+      case "cartButton":
+        return css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 0;
+          background-color: rgba(254, 95, 30, 1);
+          border-radius: 30px;
+          padding: 12px 24px;
+          color: #fff;
+          text-decoration: none;
+          transition: background-color 0.15s, transform 0.15s;
+          &:active {
+            transform: translateY(2px);
+          }
+          &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(254, 95, 30, 0.4);
+          }
+          @media (any-hover: hover) {
+            &:hover {
+              background-color: rgba(254, 71, 1, 1);
+            }
+          }
+          @media (min-width: 1440px) {
+            padding: 14px 28px;
+          }
+          .price,
+          .count {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 14px;
+            @media (min-width: 1440px) {
+              font-size: 16px;
+            }
+          }
+          .price {
+            padding-right: 12px;
+          }
+          .count {
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+            padding-left: 12px;
+            svg {
+              margin-right: 4px;
+            }
           }
         `;
       default:

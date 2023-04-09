@@ -87,86 +87,11 @@ export const StyledCartPizzaCounter = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  & > button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border-radius: 50%;
-    border: 2px solid #FE5F1E;
-    width: 26px;
-    height: 26px;
-    padding: 0;
-    transition: background-color .15s, transform .15s;
-    
-    @media (any-hover: hover) {
-      &:hover {
-        background-color: #FE5F1E;
-
-        .icon {
-          fill: #fff;
-        }
-      }
-    }
-
-    &:active {
-      transform: translateY(2px);
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(254, 95, 30, .4);
-    }
-    
-    .icon {
-      fill: #FE5F1E;
-      transition: fill .15s;
-    }
-  }
-
   & > .count {
     font-weight: 700;
     font-size: 16px;
     line-height: 120%;
     color: #000000;
     margin: 0 12px;
-  }
-`;
-
-export const StyledCartPizzaRemove = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border: 2px solid #D0D0D0;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  padding: 0;
-  transition: background-color .15s, border-color .15s, transform .15s;
-
-  @media (any-hover: hover) {
-    &:hover {
-      background-color: #222;
-      border-color: #222;
-      
-      .icon {
-        fill: #fff;
-      }
-    }
-  }
-
-  &:active {
-    transform: translateY(2px);
-  }
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(34, 34, 34, .4);
-  }
-  
-  .icon {
-    fill: #D0D0D0;
-    transition: fill .15s;
   }
 `;

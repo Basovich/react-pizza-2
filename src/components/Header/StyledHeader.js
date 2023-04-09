@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {StyledLogoDiv} from '../Logo/StyledLogo';
-import {StyledSearch} from '../Search/StyledSearch';
-import {StyledCartButton} from '../CartButton/StyledCartButton';
+import { StyledLogoDiv } from '../Logo/StyledLogo';
+import { StyledSearch } from '../Search/StyledSearch';
+import { StyledLinkButton } from '../Button/StyledButton';
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -16,7 +16,7 @@ export const StyledHeader = styled.header`
     order: 1;
   }
   
-  ${StyledCartButton} {
+  ${StyledLinkButton} {
     order: 2;
 
     @media (min-width: 1024px) {

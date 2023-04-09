@@ -12,6 +12,13 @@ export const cartSlice = createSlice({
       state.pizzas = action.payload.pizzas;
       state.totalCount = action.payload.totalCount;
       state.totalPrice = action.payload.totalPrice;
+
+      // TODO: Refactor
+      localStorage.setItem('pizzas', JSON.stringify({
+        pizzas: action.payload.pizzas,
+        totalCount: action.payload.totalCount,
+        totalPrice: action.payload.totalPrice,
+      }));
     }
   },
 });
