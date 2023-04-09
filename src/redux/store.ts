@@ -1,7 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// import { combineReducers } from '@reduxjs/toolkit';
 import filterReducer from './filter/slice';
 import cartReducer from './cart/slice';
 import pizzasReducer from './pizzas/slice';
@@ -11,20 +10,16 @@ const persistConfig = {
   storage,
 }
 
-// const rootReduser = combineReducers({
-//   filter: filterReducer,
-//   cart: cartReducer,
-//   pizzas: pizzasReducer,
-// })
+const rootReduser = combineReducers({
+  filter: filterReducer,
+  cart: cartReducer,
+  pizzas: pizzasReducer,
+})
 
-const persistedReducer = persistReducer(persistConfig, cartReducer)
+const persistedReducer = persistReducer(persistConfig, rootReduser)
 
 export const store = configureStore({
-  reducer: {
-    filter: filterReducer,
-    cart: persistedReducer,
-    pizzas: pizzasReducer,
-  },
+  reducer: persistedReducer,
 });
 
 export const persister = persistStore(store);
