@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@tsconfig/create-react-app": "^1.0.3",
     "@types/lodash.debounce": "^4.0.7",
     "@types/lodash.isequal": "^4.5.6"
   }
