@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { sorts } from '../../utils/staticData';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { selectSortType } from '../../redux/filter/selectors';
 import { changeSort } from '../../redux/filter/slice';
 import { StyledSort } from './StyledSort';
+import { DocumentClickType } from './types';
 
-type DocumentClickType = MouseEvent & {
-  path: Node[];
-}
+const SortList = lazy(() => import( /* webpackChunkName: "SortList" */'./SortList'));
 
 export function Sort() {
   const refSort = useRef<HTMLDivElement>(null);
@@ -61,19 +60,9 @@ export function Sort() {
       </button>
       {
         isOpen && (
-          <div className="sort-list">
-            {
-              sorts.map((name, index) => (
-                <button onClick={() => handleOnClickSort(name)}
-                        className={sortType === name ? "sort-list-item active" : "sort-list-item"}
-                        type={'button'}
-                        key={index}
-                >
-                  {name}
-                </button>
-              ))
-            }
-          </div>
+          <Suspense fallback={<p>Loading...</p>}>
+            <SortList sorts={sorts} handleOnClickSort={handleOnClickSort} sortType={sortType} />
+          </Suspense>
         )
       }
     </StyledSort>
