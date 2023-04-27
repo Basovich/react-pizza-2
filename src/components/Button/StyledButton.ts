@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import { ButtonProps, LinkButtonProps } from "./types";
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -257,7 +258,7 @@ export const StyledButton = styled.button`
   }}
 `;
 
-export const StyledLinkButton = styled(Link)`
+export const StyledLinkButton = styled(Link)<LinkButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
