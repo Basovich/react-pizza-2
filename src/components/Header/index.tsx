@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { Logo, CartButton, Search } from "../";
 import { StyledHeader } from './StyledHeader';
 
-export function Header() {
+export const Header: React.FC = () => {
   const location = useLocation();
 
   return (

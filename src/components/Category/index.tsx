@@ -5,7 +5,7 @@ import { changeCategoryId } from '../../redux/filter/slice';
 import { Button } from '../';
 import { StyledCategory } from './StyledCategory';
 
-export function Category() {
+export const Category: React.FC = () => {
   const categoryId = useAppSelector(selectCategory);
   const dispatch = useAppDispatch();
   

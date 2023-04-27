@@ -17,22 +17,22 @@ export function App() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
             <Route path="" element={
-              <Suspense fallback={PageLoader()}>
+              <Suspense fallback={<PageLoader />}>
                 <Home />
               </Suspense>                     
             } />
             <Route path="cart" element={
-              <Suspense fallback={PageLoader()}>
+              <Suspense fallback={<PageLoader />}>
                 <Cart />
               </Suspense>
             } />
             <Route path="thanks" element={
-              <Suspense fallback={PageLoader()}>
+              <Suspense fallback={<PageLoader />}>
                 <Thanks />
               </Suspense>
             } />
             <Route path="*" element={
-              <Suspense fallback={PageLoader()}>
+              <Suspense fallback={<PageLoader />}>
                 <Error />
               </Suspense>
             } />

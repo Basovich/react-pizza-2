@@ -2,7 +2,7 @@ import { useAppSelector } from '../../hooks/redux-hooks';
 import { selectCart } from '../../redux/cart/selectors';
 import { LinkButton } from '../Button';
 
-export function CartButton() {
+export const CartButton: React.FC = () => {
   const {totalCount, totalPrice} = useAppSelector(selectCart);
 
   return (

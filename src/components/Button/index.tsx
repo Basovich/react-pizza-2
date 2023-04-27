@@ -1,13 +1,13 @@
 import { ButtonProps, LinkButtonProps } from './types';
 import { StyledButton, StyledLinkButton } from './StyledButton';
 
-export function Button(props: ButtonProps) {
+export const Button: React.FC<ButtonProps> = (props) => {
   return (
     <StyledButton {...props} />
   )
 }
 
-export function LinkButton(props: LinkButtonProps) {
+export const LinkButton: React.FC<LinkButtonProps> = (props: LinkButtonProps) => {
   return (
     <StyledLinkButton {...props} />
   )

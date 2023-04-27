@@ -24,7 +24,7 @@ type PizzaInterface = {
   count: number;
 }
 
-export function CartPizza({id, name, about, imageUrl, typePizza, sizePizza, pricePizza, count}: PizzaInterface) {
+export const CartPizza: React.FC<PizzaInterface> = ({id, name, about, imageUrl, typePizza, sizePizza, pricePizza, count}) => {
   const cart = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
 
