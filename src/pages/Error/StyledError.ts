@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { mediaQuery } from "../../utils/media-query";
+
+const {tabletLg} = mediaQuery;
 
 export const StyledErrorContent = styled.section`
   display: flex;
@@ -8,7 +11,7 @@ export const StyledErrorContent = styled.section`
   flex: 1 1;
   padding: 20px 20px 80px;
   
-  @media (min-width: 1024px) {
+  @media (min-width: ${tabletLg}) {
     justify-content: center;
   }
   

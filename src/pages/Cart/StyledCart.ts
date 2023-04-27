@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import { mediaQuery } from "../../utils/media-query";
+
+const {tabletMd} = mediaQuery;
 
 export const StyledCart = styled.div`
   margin-bottom: 40px;
   
-  @media (min-width: 768px) {
+  @media (min-width: ${tabletMd}) {
     max-width: 700px;
     margin: 40px auto 80px;
   }
