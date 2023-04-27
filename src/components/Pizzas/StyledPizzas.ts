@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import {StyledPizza} from '../Pizza/StyledPizza';
 import {StyledSkeletonPizza} from '../Pizza/StyledSkeletonPizza';
+import { mediaQuery } from '../../utils/media-query';
+
+const {tabletMd} = mediaQuery;
 
 export const StyledPizzas = styled.div`
   display: grid;
@@ -10,7 +13,7 @@ export const StyledPizzas = styled.div`
   column-gap: 30px;
   row-gap: 20px;
   
-  @media (min-width: 768px) {
+  @media (min-width: ${tabletMd}) {
     row-gap: 40px;
   }
   
@@ -25,7 +28,7 @@ export const StyledPizzas = styled.div`
       border-bottom: 0;
     }
     
-    @media (min-width: 768px) {
+    @media (min-width: ${tabletMd}) {
       padding: 0;
     }
     
