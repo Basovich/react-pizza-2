@@ -22,7 +22,7 @@ export const Logo: React.FC = () => {
   } else {
     return (
       <StyledLogoLink to="/" state={{ ...filter }}>
-        <img width="38" src={Logotype} alt="Index logo"/>
+        <img width='38' height='38' src={Logotype} alt="Index logo"/>
         <StyledLogoText>
           <h1>React Pizzas</h1>
           <p>the most delicious pizza in the universe</p>

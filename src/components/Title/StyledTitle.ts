@@ -1,17 +1,21 @@
 import styled from "styled-components";
+import { Props } from "./types";
+import { mediaQuery } from "../../utils/media-query";
 
-export const StyledTitle = styled.h1`
+const {tabletMd, desktopSm} = mediaQuery;
+
+export const StyledTitle = styled.h1<Props>`
   font-weight: 700;
   font-size: 22px;
   line-height: 120%;
   color: ${props => props.color || '#222'};
   text-align: ${props => props.textAlign || 'left'};
   
-  @media (min-width: 768px) {
+  @media (min-width: ${tabletMd}) {
     font-size: 28px;
   }
   
-  @media (min-width: 1280px) {
+  @media (min-width: ${desktopSm}) {
     font-size: 32px;
   }
 `;

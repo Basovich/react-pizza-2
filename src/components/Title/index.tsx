@@ -1,8 +1,5 @@
 import { StyledTitle } from "./StyledTitle";
-
-type Props = {
-  children: React.ReactNode;
-};
+import { Props } from "./types";
 
 export function Title(props: Props) {
   return (
