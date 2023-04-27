@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { mediaQuery } from '../../utils/media-query';
+
+const {tabletMd, tabletLg} = mediaQuery;
 
 export const StyledCartPizza = styled.div`
   display: flex;
@@ -7,7 +10,7 @@ export const StyledCartPizza = styled.div`
   border-top: 1px solid #F4F4F4;
   padding: 20px 10px;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${tabletMd}) {
     flex-wrap: nowrap;
   }
 `;
@@ -17,7 +20,7 @@ export const StyledCartPizzaImg = styled.img`
   width: 60px;
   object-fit: contain;
 
-  @media (min-width: 1024px) {
+  @media (min-width: ${tabletLg}) {
     width: 80px;
     height: 80px;
   }
@@ -27,7 +30,7 @@ export const StyledCartPizzaHead = styled.div`
   margin-left: 15px;
   flex: 1 1;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${tabletMd}) {
     padding-right: 40px;
   }
 
@@ -68,7 +71,7 @@ export const StyledCartPizzaControls = styled.div`
   justify-content: space-between;
   margin-top: 18px;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${tabletMd}) {
     width: auto;
     flex: 1 1;
   }
