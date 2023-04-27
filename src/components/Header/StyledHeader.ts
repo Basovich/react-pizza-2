@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { StyledLogoDiv } from '../Logo/StyledLogo';
 import { StyledSearch } from '../Search/StyledSearch';
 import { StyledLinkButton } from '../Button/StyledButton';
+import { mediaQuery } from '../../utils/media-query';
+
+const {tabletMd, tabletLg} = mediaQuery;
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -19,7 +22,7 @@ export const StyledHeader = styled.header`
   ${StyledLinkButton} {
     order: 2;
 
-    @media (min-width: 1024px) {
+    @media (min-width: ${tabletLg}) {
       order: 3;
     }
   }
@@ -29,11 +32,11 @@ export const StyledHeader = styled.header`
     margin-top: 12px;
     width: 100%;
     
-    @media (min-width: 768px) {
+    @media (min-width: ${tabletMd}) {
       margin-top: 18px;
     }
     
-    @media (min-width: 1024px) {
+    @media (min-width: ${tabletLg}) {
       order: 2;
       width: auto;
       max-width: 300px;
