@@ -5,6 +5,8 @@ import { mediaQuery } from "../../utils/media-query";
 const {tabletMd, desktopSm} = mediaQuery;
 
 export const StyledTitle = styled.h1<Props>`
+  display: block;
+  width: 100%;
   font-weight: 700;
   font-size: 22px;
   line-height: 120%;
