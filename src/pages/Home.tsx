@@ -86,7 +86,7 @@ export default function Home() {
   return (
     <>
       <Filters />
-      <Title>All pizzas</Title>
+      <Title as="h1" size="title-h1">All pizzas</Title>
       <Pizzas />
     </>
   )

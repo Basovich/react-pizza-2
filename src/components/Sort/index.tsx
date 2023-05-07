@@ -60,7 +60,7 @@ export function Sort() {
       </button>
       {
         isOpen && (
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={''}>
             <SortList sorts={sorts} handleOnClickSort={handleOnClickSort} sortType={sortType} />
           </Suspense>
         )

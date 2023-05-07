@@ -25,6 +25,11 @@ const meta = {
       control: 'select', 
       options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div'],
       description: 'Choose a title tag'
+    },
+    size: { 
+      control: 'select', 
+      options: ['title-h1', 'title-h2', 'title-h3', 'title-h4'],
+      description: 'Choose a size title'
     }
   },
 } satisfies Meta<typeof Title>;
@@ -38,7 +43,8 @@ export const Titles: Story = {
     children: 'All pizzas',
     color: '#222',
     textAlign: 'left',
-    as: 'h1'
+    as: 'h1',
+    size: 'title-h1'
   },
   decorators: [(Story) => {
     return (

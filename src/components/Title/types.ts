@@ -3,4 +3,5 @@ export type Props = {
     color?: string;
     textAlign?: string;
     as?: keyof JSX.IntrinsicElements;
+    size?: string;
 }

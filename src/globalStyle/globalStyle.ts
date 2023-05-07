@@ -4,6 +4,11 @@ import reset from 'styled-reset';
 export const GlobalStyle = createGlobalStyle `
   ${reset}
   
+  html {
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+  }
+
   *, 
   *:after, 
   *:before {
