@@ -34,17 +34,6 @@ export const StyledCartPizzaHead = styled.div`
     padding-right: 40px;
   }
 
-  & > .name {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 120%;
-    color: #000000;
-
-    @media (min-width: 600px) {
-      font-size: 18px;
-    }
-  }
-
   & > .about {
     font-weight: 400;
     font-size: 12px;

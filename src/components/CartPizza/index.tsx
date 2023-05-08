@@ -12,17 +12,8 @@ import {
   StyledCartPizzaImg,
 } from './StyledCartPizza';
 import { Button } from '../Button';
-
-type PizzaInterface = {
-  id: number;
-  name: string;
-  about: string;
-  imageUrl: string;
-  typePizza: string;
-  sizePizza: number;
-  pricePizza: number;
-  count: number;
-}
+import { PizzaInterface } from './types';
+import { Title } from '../../stories/Typography/Title';
 
 export const CartPizza: React.FC<PizzaInterface> = ({id, name, about, imageUrl, typePizza, sizePizza, pricePizza, count}) => {
   const cart = useAppSelector(selectCart);
@@ -93,9 +84,7 @@ export const CartPizza: React.FC<PizzaInterface> = ({id, name, about, imageUrl, 
         src={imageUrl}
         className="pizza-img" alt="" loading="lazy"/>
       <StyledCartPizzaHead>
-        <p className="name">
-          {name}
-        </p>
+        <Title as="p" size="title-h4" color="#000">{name}</Title>
         <p className="about">
           {about}
           <br/>

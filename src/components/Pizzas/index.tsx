@@ -4,7 +4,7 @@ import { NotFoundPizzas } from './NotFoundPizzas';
 import { selectPizzas } from '../../redux/pizzas/selectors';
 import { StyledPizzas } from './StyledPizzas';
 
-export function Pizzas() {
+export const Pizzas: React.FC = () => {
   const skeletons = [...new Array(4)].map((_, index) => (<SkeletonPizza key={index}/>));
   const {pizzas, status} = useAppSelector(selectPizzas);
 

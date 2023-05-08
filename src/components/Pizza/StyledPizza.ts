@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { StyledTitle } from '../../stories/Typography/Title/StyledTitle';
 
 export const StyledPizza = styled.div`
   width: 100%;
@@ -14,11 +15,8 @@ export const StyledPizza = styled.div`
     object-fit: contain;
   }
   
-  .pizza-title {
-    font-size: 20px;
-    font-weight: 900;
+  ${StyledTitle} {
     margin-top: 12px;
-    text-align: center;
   }
   
   .pizza-compound {

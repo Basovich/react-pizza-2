@@ -11,5 +11,5 @@ export * from './Pizzas/NotFoundPizzas';
 export * from './Pizzas';
 export * from './Search';
 export * from './Sort';
-export * from './Title';
+export * from '../stories/Typography/Title';
 export * from './PageLoader';

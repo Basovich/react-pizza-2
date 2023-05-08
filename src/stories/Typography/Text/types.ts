@@ -4,4 +4,5 @@ export type Props = {
     textAlign?: string;
     as?: keyof JSX.IntrinsicElements;
     size?: string;
+    weight?: string;
 }

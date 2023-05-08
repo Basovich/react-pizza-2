@@ -1,7 +1,9 @@
-export default function Thanks() {
+const Thanks: React.FC = () => {
   return (
     <>
       Thank you!
     </>
   )
 }
+
+export default Thanks;

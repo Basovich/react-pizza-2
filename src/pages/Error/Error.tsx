@@ -1,6 +1,6 @@
 import { StyledErrorContent } from './StyledError';
 
-export default function Error() {
+const Error: React.FC = () => {
   return (
     <StyledErrorContent>
       <h1 className="title">Oops!</h1>
@@ -10,3 +10,5 @@ export default function Error() {
     </StyledErrorContent>
   )
 }
+
+export default Error;

@@ -8,7 +8,7 @@ import { DocumentClickType } from './types';
 
 const SortList = lazy(() => import( /* webpackChunkName: "SortList" */'./SortList'));
 
-export function Sort() {
+export const Sort: React.FC = () => {
   const refSort = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const sortType = useAppSelector(selectSortType);

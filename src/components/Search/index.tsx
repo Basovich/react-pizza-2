@@ -7,7 +7,7 @@ import { StyledSearch } from './StyledSearch';
 import { Button } from '../Button';
 
 
-export function Search() {
+export const Search: React.FC = () => {
   const search = useAppSelector(selectSearch);
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();

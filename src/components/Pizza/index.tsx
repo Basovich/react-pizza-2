@@ -7,8 +7,9 @@ import { CartPizzaInterface } from '../../redux/cart/types';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { Button } from '../';
 import { StyledPizza } from './StyledPizza';
+import { Title } from '../../stories/Typography/Title';
 
-export function Pizza({id, imageUrl, name, about, types, sizes, prices}: PizzaInterface) {
+export const Pizza: React.FC<PizzaInterface> = ({id, imageUrl, name, about, types, sizes, prices}) => {
   const [typePizza, setTypePizza] = useState(types[0]);
   const [sizePizza, setSizePizza] = useState(0);
   const [addedPizza, setAddedPizza] = useState(0);
@@ -92,9 +93,7 @@ export function Pizza({id, imageUrl, name, about, types, sizes, prices}: PizzaIn
            alt=""
            loading={'lazy'}
       />
-      <p className="pizza-title">
-        {name}
-      </p>
+      <Title as="p" weight="900" size="title-h4" textAlign="center">{name}</Title>
       <p className="pizza-compound">
         {about}
       </p>

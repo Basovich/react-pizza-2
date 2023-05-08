@@ -9,7 +9,7 @@ import { fetchPizzas } from '../redux/pizzas/slice';
 import { useAppDispatch, useAppSelector } from '../hooks/redux-hooks';
 import { Filters, Title, Pizzas } from '../components/';
 
-export default function Home() {
+const Home = () => {
   const navigate = useNavigate();
   const isMounted = useRef(false);
   const location = useLocation();
@@ -86,8 +86,10 @@ export default function Home() {
   return (
     <>
       <Filters />
-      <Title as="h1" size="title-h1">All pizzas</Title>
+      <Title as="h2" size="title-h1">All pizzas</Title>
       <Pizzas />
     </>
   )
 }
+
+export default Home;

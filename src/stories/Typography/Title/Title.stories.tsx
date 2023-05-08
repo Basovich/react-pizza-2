@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Title } from './';
-import { GlobalStyle } from '../../globalStyle/globalStyle';
+import { Title } from '.';
+import { GlobalStyle } from '../../../globalStyle/globalStyle';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
@@ -23,13 +23,18 @@ const meta = {
     },
     as: { 
       control: 'select', 
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div'],
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span'],
       description: 'Choose a title tag'
     },
     size: { 
       control: 'select', 
       options: ['title-h1', 'title-h2', 'title-h3', 'title-h4'],
       description: 'Choose a size title'
+    },
+    weight: { 
+      control: 'select', 
+      options: ['300', '400', '500', '600', '700', '800', '900'],
+      description: 'Choose a weight title'
     }
   },
 } satisfies Meta<typeof Title>;
@@ -44,7 +49,8 @@ export const Titles: Story = {
     color: '#222',
     textAlign: 'left',
     as: 'h1',
-    size: 'title-h1'
+    size: 'title-h1',
+    weight: '700'
   },
   decorators: [(Story) => {
     return (
